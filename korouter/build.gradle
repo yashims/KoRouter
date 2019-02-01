@@ -1,17 +1,7 @@
 plugins {
     id 'com.android.library'
-//    id 'java-library'
     id 'kotlin-multiplatform'
 }
-
-//apply plugin: 'java-library'
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-}
-
-sourceCompatibility = "7"
-targetCompatibility = "7"
 
 group "me.yashims85"
 version "0.0.1"
@@ -23,15 +13,10 @@ ext {
 
 android {
     compileSdkVersion 28
-//    group library_name
-//    version library_version
     archivesBaseName = library_name
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 28
-        versionCode library_build  // 不要かも
-        versionName version  // 不要かも
     }
 
     sourceSets {
@@ -41,6 +26,22 @@ android {
             java.srcDirs += "${root}/kotlin"
         }
     }
+}
+
+dependencies {
+    // Specify Kotlin/JVM stdlib dependency.
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+
+    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'org.jetbrains.kotlin:kotlin-test'
+    androidTestImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
 kotlin {
@@ -102,6 +103,7 @@ configurations {
 }
 
 //// TODO: iOSやるときまでお休み
+// SEE: https://github.com/JetBrains/kotlin-mpp-example/blob/master/greeting/build.gradle
 //task packForXCode(type: Sync) {
 //    final File frameworkDir = new File(buildDir, "xcode-frameworks")
 //    final String mode = project.findProperty("XCODE_CONFIGRATION")?.toUpperCase() ?: 'DEBUG'

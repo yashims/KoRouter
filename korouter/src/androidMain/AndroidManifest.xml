@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.ekimemo.alllib">
+          package="me.yashims85.korouter">
 
   <application>
 
