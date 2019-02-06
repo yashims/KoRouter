@@ -12,8 +12,23 @@ class KoRouter(routes: List<Route>) {
 
     fun push(location: String) = GlobalScope.async {
         history.push(location)
-        val route = matcher.match(location)
-        differDispatch(currentRoute, route)
+        val prevRoute = currentRoute
+        currentRoute = matcher.match(location)
+        differDispatch(prevRoute, currentRoute)
+    }
+
+    fun back() = GlobalScope.async {
+        val location = history.back()
+        val prevRoute = currentRoute
+        currentRoute = matcher.match(location)
+        differDispatch(prevRoute, currentRoute)
+    }
+
+    fun forward() = GlobalScope.async {
+        val location = history.forward()
+        val prevRoute = currentRoute
+        currentRoute = matcher.match(location)
+        differDispatch(prevRoute, currentRoute)
     }
 
     fun addChildren(parentLocation: String, children: List<Route>) {

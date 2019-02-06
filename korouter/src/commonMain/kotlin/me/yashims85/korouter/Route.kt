@@ -4,7 +4,7 @@ data class Route(
     val path: String,
     val name: String,
     val component: Presenter,
-    var children: List<Route>? = null,
+    var children: MutableList<Route>? = null,
     var parent: Route? = null
 ) {
     fun fullPath(): String {

@@ -15,12 +15,20 @@ class Matcher(routes: List<Route>) {
     }
 
     fun root(): Route = tree
+
     fun addChildren(parent: Route, children: List<Route>) {
-        parent.children = children
-        children.forEach {
-            it.parent = parent
-            it.children?.let { nextGenChildren ->
-                addChildren(it, nextGenChildren)
+        if (parent.children == null) {
+            parent.children = mutableListOf()
+        }
+
+        parent.children?.apply {
+            addAll(children)
+
+            this.forEach {
+                it.parent = parent
+                it.children?.let { nextGenChildren ->
+                    addChildren(it, nextGenChildren)
+                }
             }
         }
     }
