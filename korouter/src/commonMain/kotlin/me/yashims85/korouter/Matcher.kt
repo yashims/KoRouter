@@ -2,13 +2,19 @@ package me.yashims85.korouter
 
 class Matcher(routes: List<Route>) {
 
-    private val tree: Route = Route("", "", object : Presenter {})
+    private val tree: Route = Route("", "", object : Presenter {
+        override fun onSwapInChild(name: String, child: Presenter, args: Map<String, String>) {}
+
+        override fun onSwapOutChild(name: String, child: Presenter) {}
+    })
+
     private val locationMatcher: Regex = Regex("^/?(:.+)")
 
     init {
         addChildren(tree, routes)
     }
 
+    fun root(): Route = tree
     fun addChildren(parent: Route, children: List<Route>) {
         parent.children = children
         children.forEach {
@@ -20,11 +26,10 @@ class Matcher(routes: List<Route>) {
     }
 
     fun addChildren(parentLocation: String, children: List<Route>) {
-        addChildren(match(parentLocation).last(), children)
+        addChildren(match(parentLocation), children)
     }
 
-    fun match(location: String, route: Route = tree): List<Route> {
-        val list: MutableList<Route> = mutableListOf()
+    fun match(location: String, route: Route = tree): Route {
         var (locationSlice, nextLocation) = location.split('/', limit = 2)
 
         // if current location is blank avoid current location slice.
@@ -36,18 +41,18 @@ class Matcher(routes: List<Route>) {
             locationSlice = "/"
         }
 
-        route.children
+        return route.children
             ?.firstOrNull {
                 it.path == locationSlice || locationMatcher.matches(locationSlice)
             }
             ?.let {
-                list.add(it)
-                if (nextLocation.isNotBlank()) {
-                    list.addAll(match(nextLocation, it))
+                if (nextLocation.isBlank()) {
+                    it
+                } else {
+                    match(nextLocation, it)
                 }
             }
             ?: throw RouteNotMatchException()
-        return list
     }
 
     class RouteNotMatchException : Exception()

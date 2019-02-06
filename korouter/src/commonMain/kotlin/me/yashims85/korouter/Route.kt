@@ -2,7 +2,7 @@ package me.yashims85.korouter
 
 data class Route(
     val path: String,
-    val name: String?,
+    val name: String,
     val component: Presenter,
     var children: List<Route>? = null,
     var parent: Route? = null
@@ -12,5 +12,13 @@ data class Route(
             val fullPath = it.fullPath()
             if (fullPath.isBlank()) path else "$fullPath/$path"
         } ?: path
+    }
+
+    fun fullNodes(): MutableList<Route> {
+        return parent?.let {
+            it.fullNodes().apply {
+                add(this@Route)
+            }
+        } ?: mutableListOf(this)
     }
 }
