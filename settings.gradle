@@ -1,1 +1,1 @@
-include ':app', ':korouter'
+include ':android', ':korouter'
