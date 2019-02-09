@@ -29,6 +29,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+        this.supportFragmentManager.beginTransaction().apply {
+            replace(R.id.content_main, TopFragment())
+            commit()
+        }
+
         nav_view.setNavigationItemSelectedListener(this)
     }
 
