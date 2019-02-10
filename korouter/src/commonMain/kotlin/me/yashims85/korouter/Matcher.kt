@@ -11,25 +11,24 @@ class Matcher(routes: List<Route>) {
     private val locationMatcher: Regex = Regex("^/?(:.+)")
 
     init {
-        addChildren(tree, routes)
+        addChildren(tree, routes, enableReplace = true)
     }
 
     fun root(): Route = tree
 
-    fun addChildren(parent: Route, children: List<Route>) {
-        if (parent.children == null) {
+    fun addChildren(parent: Route, children: List<Route>, enableReplace: Boolean = false) {
+        if (parent.children == null || enableReplace) {
             parent.children = mutableListOf()
         }
 
         parent.children?.apply {
-            addAll(children)
-
-            this.forEach {
+            children.forEach {
                 it.parent = parent
                 it.children?.let { nextGenChildren ->
                     addChildren(it, nextGenChildren)
                 }
             }
+            addAll(children)
         }
     }
 
@@ -51,38 +50,17 @@ class Matcher(routes: List<Route>) {
 
         return route.children
             ?.firstOrNull {
-                it.path == locationSlice || locationMatcher.matches(locationSlice)
+                it.path == locationSlice || it.path.isBlank() || locationMatcher.matches(it.path)
             }
             ?.let {
-                if (nextLocation.isBlank()) {
-                    it
-                } else {
-                    match(nextLocation, it)
+                when {
+                    it.path.isBlank() -> match(location, it)
+                    nextLocation.isNotBlank() -> match(nextLocation, it)
+                    else -> it
                 }
             }
             ?: throw RouteNotMatchException()
     }
 
     class RouteNotMatchException : Exception()
-
-//    private val argPathRegex: Regex = Regex("^/?([^/]*)(.*)$")
-//    fun match3(location: String, route: Route = tree): List<Route> {
-//        val list: MutableList<Route> = mutableListOf()
-//        argPathRegex.matchEntire(location)?.apply {
-//            val (locationSlice, nextLocation) = this.groupValues
-//
-//            // allow parameter path
-//            val isMatchPath = Regex("^/?(:.+|$locationSlice)")
-//
-//            route.children?.forEach {
-//                if (isMatchPath.matches(it.path)) {
-//                    return list.apply {
-//                        add(it)
-//                        addAll(match(nextLocation, it))
-//                    }
-//                }
-//            }
-//        }
-//        return list
-//    }
 }

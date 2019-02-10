@@ -1,6 +1,6 @@
 package me.yashims85.util
 
-private const val APP_TAG: String = "me.yashims85"
+private const val APP_TAG: String = "me.yashims85.util"
 
 internal actual fun logWrite(msg: String, logLevel: LogLevel) {
     when (logLevel) {

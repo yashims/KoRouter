@@ -2,6 +2,7 @@ package me.yashims85.korouter
 
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import me.yashims85.util.Log
 import kotlin.math.min
 
 class KoRouter(routes: List<Route>) {
@@ -11,12 +12,10 @@ class KoRouter(routes: List<Route>) {
     private var currentRoute: Route = matcher.root()
 
     fun push(location: String) {
-        GlobalScope.async {
-            history.push(location)
-            val prevRoute = currentRoute
-            currentRoute = matcher.match(location)
-            differDispatch(prevRoute, currentRoute)
-        }
+        history.push(location)
+        val prevRoute = currentRoute
+        currentRoute = matcher.match(location)
+        differDispatch(prevRoute, currentRoute)
     }
 
     fun back() = GlobalScope.async {
@@ -39,19 +38,33 @@ class KoRouter(routes: List<Route>) {
 
     fun differDispatch(prev: Route, next: Route) {
         val (prevList, nextList) = prev.fullNodes() to next.fullNodes()
-        val maxSynonymPathHeight = min(prevList.lastIndex, nextList.lastIndex)
-        val commonAncestorIndex: Int = (0..maxSynonymPathHeight).lastOrNull {
+        Log.d("KoRouter@differ prev(${prevList.size}): ${prevList} next(${nextList.size}): ${nextList}")
+        val minSynonymPathIndex = min(prevList.lastIndex, nextList.lastIndex)
+        val commonAncestorIndex: Int = (0..minSynonymPathIndex).lastOrNull {
             prevList[it] == nextList[it]
-        } ?: maxSynonymPathHeight
+        } ?: minSynonymPathIndex
+        Log.d("KoRouter@differ minSynonym: ${minSynonymPathIndex} commonAncIdx: ${commonAncestorIndex}")
 
-        prevList.subList(commonAncestorIndex, prevList.lastIndex).reduce { parent, child ->
-            parent.component.onSwapOutChild(child.name, child.component)
-            child
+        prevList.subList(commonAncestorIndex, prevList.size).apply {
+            Log.d("KoRouter@differ swapout prev(${this.size}): ${this}")
+            if (this.size > 1) {
+                reduce { parent, child ->
+                    Log.d("KoRouter@differ swap out: ${child}")
+                    parent.component.onSwapOutChild(child.name, child.component)
+                    child
+                }
+            }
         }
 
-        nextList.subList(commonAncestorIndex, nextList.lastIndex).reduce { parent, child ->
-            parent.component.onSwapInChild(child.name, child.component, emptyMap())
-            child
+        nextList.subList(commonAncestorIndex, nextList.size).apply {
+            Log.d("KoRouter@differ swapin prev(${this.size}): ${this}")
+            if (this.size > 1) {
+                reduce { parent, child ->
+                    Log.d("KoRouter@differ swap in: ${child}")
+                    parent.component.onSwapInChild(child.name, child.component, emptyMap())
+                    child
+                }
+            }
         }
     }
 }

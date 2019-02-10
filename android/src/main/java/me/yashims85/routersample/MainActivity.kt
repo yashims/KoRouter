@@ -18,11 +18,16 @@ import me.yashims85.korouter.Route
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, Presenter {
 
-    val router: KoRouter  = KoRouter(listOf(
-        Route("/", "top", TopFragment()),
-        Route("/gallery", "top", GalleryFragment())
-
-    ))
+    private val router: KoRouter = KoRouter(
+        listOf(
+            Route(
+                "", "", this, children = mutableListOf(
+                    Route("/", "top", TopFragment()),
+                    Route("gallery", "gallery", GalleryFragment())
+                )
+            )
+        )
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+        Log.d("korouter", "MainActivity@onCreate push: /")
         router.push("/")
 
         nav_view.setNavigationItemSelectedListener(this)

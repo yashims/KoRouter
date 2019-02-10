@@ -21,4 +21,8 @@ data class Route(
             }
         } ?: mutableListOf(this)
     }
+
+    override fun toString(): String {
+        return path
+    }
 }
