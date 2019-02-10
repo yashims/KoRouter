@@ -10,11 +10,13 @@ class KoRouter(routes: List<Route>) {
     private val history: History = History()
     private var currentRoute: Route = matcher.root()
 
-    fun push(location: String) = GlobalScope.async {
-        history.push(location)
-        val prevRoute = currentRoute
-        currentRoute = matcher.match(location)
-        differDispatch(prevRoute, currentRoute)
+    fun push(location: String) {
+        GlobalScope.async {
+            history.push(location)
+            val prevRoute = currentRoute
+            currentRoute = matcher.match(location)
+            differDispatch(prevRoute, currentRoute)
+        }
     }
 
     fun back() = GlobalScope.async {

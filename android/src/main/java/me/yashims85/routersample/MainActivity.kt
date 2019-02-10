@@ -3,15 +3,26 @@ package me.yashims85.routersample
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import me.yashims85.korouter.KoRouter
+import me.yashims85.korouter.Presenter
+import me.yashims85.korouter.Route
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, Presenter {
+
+    val router: KoRouter  = KoRouter(listOf(
+        Route("/", "top", TopFragment()),
+        Route("/gallery", "top", GalleryFragment())
+
+    ))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +40,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        this.supportFragmentManager.beginTransaction().apply {
-            replace(R.id.content_main, TopFragment())
-            commit()
-        }
+        router.push("/")
 
         nav_view.setNavigationItemSelectedListener(this)
     }
@@ -68,7 +76,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 // Handle the camera action
             }
             R.id.nav_gallery -> {
-
+                router.push("/gallery")
             }
             R.id.nav_slideshow -> {
 
@@ -86,5 +94,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onSwapInChild(name: String, child: Presenter, args: Map<String, String>) {
+        Log.d("korouter", "MainActivity@onSwapInChild name: $name")
+        if (child is Fragment) {
+            Log.d("korouter", "MainActivity@onSwapInChild child:$child")
+            this.supportFragmentManager.beginTransaction().apply {
+                replace(R.id.content_main, child)
+                commit()
+            }
+        }
+    }
+
+    override fun onSwapOutChild(name: String, child: Presenter) {
+        Log.d("korouter", "MainActivity@onSwapOutChild name:$name, child:$child")
     }
 }
