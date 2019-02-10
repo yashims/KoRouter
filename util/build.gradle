@@ -8,7 +8,7 @@ version "0.0.1"
 
 ext {
     library_build = 1
-    library_name = group + ".korouter"
+    library_name = group + ".util"
 }
 
 android {
@@ -31,7 +31,6 @@ android {
 dependencies {
     // Specify Kotlin/JVM stdlib dependency.
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7'
-    implementation project(':util')
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
@@ -71,7 +70,6 @@ kotlin {
             dependencies {
                 implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
                 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutines_version"
-                implementation project(':util')
             }
         }
 
