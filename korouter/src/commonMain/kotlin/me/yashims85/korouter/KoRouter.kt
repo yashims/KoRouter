@@ -2,7 +2,6 @@ package me.yashims85.korouter
 
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
-import me.yashims85.util.Log
 import kotlin.math.min
 
 class KoRouter(routes: List<Route>) {
@@ -38,18 +37,14 @@ class KoRouter(routes: List<Route>) {
 
     fun differDispatch(prev: Route, next: Route) {
         val (prevList, nextList) = prev.fullNodes() to next.fullNodes()
-        Log.d("KoRouter@differ prev(${prevList.size}): ${prevList} next(${nextList.size}): ${nextList}")
         val minSynonymPathIndex = min(prevList.lastIndex, nextList.lastIndex)
         val commonAncestorIndex: Int = (0..minSynonymPathIndex).lastOrNull {
             prevList[it] == nextList[it]
         } ?: minSynonymPathIndex
-        Log.d("KoRouter@differ minSynonym: ${minSynonymPathIndex} commonAncIdx: ${commonAncestorIndex}")
 
         prevList.subList(commonAncestorIndex, prevList.size).apply {
-            Log.d("KoRouter@differ swapout prev(${this.size}): ${this}")
             if (this.size > 1) {
                 reduce { parent, child ->
-                    Log.d("KoRouter@differ swap out: ${child}")
                     parent.component.onSwapOutChild(child.name, child.component)
                     child
                 }
@@ -57,10 +52,8 @@ class KoRouter(routes: List<Route>) {
         }
 
         nextList.subList(commonAncestorIndex, nextList.size).apply {
-            Log.d("KoRouter@differ swapin prev(${this.size}): ${this}")
             if (this.size > 1) {
                 reduce { parent, child ->
-                    Log.d("KoRouter@differ swap in: ${child}")
                     parent.component.onSwapInChild(child.name, child.component, emptyMap())
                     child
                 }

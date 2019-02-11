@@ -37,7 +37,9 @@ class Matcher(routes: List<Route>) {
     }
 
     fun match(location: String, route: Route = tree): Route {
-        var (locationSlice, nextLocation) = location.split('/', limit = 2)
+        val splitList = location.split('/', limit = 2)
+        var locationSlice = splitList.getOrElse(0) { "" }
+        var nextLocation = splitList.getOrElse(1) { "" }
 
         // if current location is blank avoid current location slice.
         if (locationSlice.isBlank() && nextLocation.isNotBlank()) {

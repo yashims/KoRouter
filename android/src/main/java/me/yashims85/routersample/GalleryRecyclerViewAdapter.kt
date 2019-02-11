@@ -7,19 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 
-import me.yashims85.routersample.GalleryFragment.OnListFragmentInteractionListener
 import me.yashims85.routersample.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.gallery_item.view.*
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
- */
 class GalleryRecyclerViewAdapter(
-    private val mValues: List<DummyItem>,
-    private val mListener: OnListFragmentInteractionListener?
+    private val mValues: List<DummyItem>
 ) : RecyclerView.Adapter<GalleryRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
@@ -29,7 +22,6 @@ class GalleryRecyclerViewAdapter(
             val item = v.tag as DummyItem
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
-            mListener?.onListFragmentInteraction(item)
         }
     }
 
