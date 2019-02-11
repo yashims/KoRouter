@@ -63,6 +63,4 @@ class Matcher(routes: List<Route>) {
             }
             ?: throw RouteNotMatchException()
     }
-
-    class RouteNotMatchException : Exception()
 }
