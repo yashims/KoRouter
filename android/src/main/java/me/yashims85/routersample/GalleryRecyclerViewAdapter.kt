@@ -20,6 +20,7 @@ class GalleryRecyclerViewAdapter(
     init {
         mOnClickListener = View.OnClickListener { v ->
             val item = v.tag as DummyItem
+            App.router.push("/gallery/1234")
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
         }

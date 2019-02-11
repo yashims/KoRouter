@@ -23,7 +23,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Route(
                 "", "", this, children = mutableListOf(
                     Route("/", "top", TopFragment()),
-                    Route("gallery", "gallery", GalleryFragment())
+                    Route(
+                        "gallery", "gallery", GalleryFragment(), children = mutableListOf(
+                            Route(":detail", "detail", GalleryDialogFragment())
+                        )
+                    )
                 )
             )
         )
@@ -33,6 +37,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        App.router = router
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
