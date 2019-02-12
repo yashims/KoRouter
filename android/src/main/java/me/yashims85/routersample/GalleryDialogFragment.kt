@@ -13,6 +13,7 @@ class GalleryDialogFragment : DialogFragment(), Presenter {
         return AlertDialog.Builder(this.activity!!)
             .setTitle("選択")
             .setItems(arrayOf("aaa", "bbb", "ccc")) { dialog: DialogInterface?, which: Int ->
+                App.router.back()
             }
             .create()
     }

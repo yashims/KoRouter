@@ -2,6 +2,7 @@ package me.yashims85.routersample
 
 import android.content.Context
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
@@ -50,12 +51,13 @@ class GalleryFragment : Fragment(), Presenter {
 
     override fun onSwapInChild(name: String, child: Presenter, args: Map<String, String>) {
         Log.d("korouter", "TopFragment@onSwapInChild name: $name")
-        if (child is Fragment) {
+        if (child is DialogFragment) {
             Log.d("korouter", "TopFragment@onSwapInChild child:$child")
-            this.fragmentManager?.beginTransaction()?.apply {
-                replace(R.id.content_main, child)
-                commit()
-            }
+            child.show(this.childFragmentManager, "Please Select")
+//            this.fragmentManager?.beginTransaction()?.apply {
+//                replace(R.id.content_main, child)
+//                commit()
+//            }
         }
     }
 

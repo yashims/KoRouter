@@ -17,14 +17,14 @@ class KoRouter(routes: List<Route>) {
         differDispatch(prevRoute, currentRoute)
     }
 
-    fun back() = GlobalScope.async {
+    fun back() {
         val location = history.back()
         val prevRoute = currentRoute
         currentRoute = matcher.match(location)
         differDispatch(prevRoute, currentRoute)
     }
 
-    fun forward() = GlobalScope.async {
+    fun forward() {
         val location = history.forward()
         val prevRoute = currentRoute
         currentRoute = matcher.match(location)
