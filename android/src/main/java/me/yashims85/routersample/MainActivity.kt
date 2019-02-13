@@ -1,8 +1,8 @@
 package me.yashims85.routersample
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -13,6 +13,7 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import me.yashims85.korouter.KoRouter
+import me.yashims85.korouter.OutOfHistoryRangeException
 import me.yashims85.korouter.Presenter
 import me.yashims85.korouter.Route
 
@@ -61,7 +62,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            try {
+                App.router.back()
+            } catch (e: OutOfHistoryRangeException) {
+                super.onBackPressed()
+            }
         }
     }
 

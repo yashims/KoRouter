@@ -1,6 +1,6 @@
 package me.yashims85.korouter
 
-class History() {
+class History {
 
     private val history: MutableList<String> = mutableListOf()
     private var index: Int = -1
@@ -16,7 +16,7 @@ class History() {
             history.add(location)
         } else {
             history[index] = location
-            ((index+1)..history.lastIndex).forEach {
+            ((index + 1)..history.lastIndex).forEach {
                 history.removeAt(it)
             }
         }
@@ -33,15 +33,17 @@ class History() {
     }
 
     fun go(number: Int): String {
-        var nextIndex = index + number
-        if (nextIndex < 0) nextIndex = 0
-        if (nextIndex > history.lastIndex) nextIndex = history.lastIndex
+        val nextIndex = index + number
+        if (nextIndex < 0 || nextIndex > history.lastIndex) {
+            throw OutOfHistoryRangeException()
+        }
         index = nextIndex
         return history[index]
     }
 
-    fun back(): String = go(-1)
-    fun forward(): String = go(1)
+    fun back(number: Int = -1): String = go(number)
+
+    fun forward(number: Int = 1): String = go(number)
 
     fun hasBack() = 0 < index
     fun hasForward() = history.lastIndex > index

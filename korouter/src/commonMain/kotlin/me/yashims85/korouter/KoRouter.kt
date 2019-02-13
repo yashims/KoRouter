@@ -1,7 +1,5 @@
 package me.yashims85.korouter
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlin.math.min
 
 class KoRouter(routes: List<Route>) {
