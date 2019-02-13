@@ -1,5 +1,6 @@
 package me.yashims85.korouter
 
+import me.yashims85.util.Log
 import kotlin.math.min
 
 class KoRouter(routes: List<Route>) {
@@ -42,18 +43,16 @@ class KoRouter(routes: List<Route>) {
 
         prevList.subList(commonAncestorIndex, prevList.size).apply {
             if (this.size > 1) {
-                reduce { parent, child ->
+                this.windowed(2).forEach { (parent: Route, child: Route) ->
                     parent.component.onSwapOutChild(child.name, child.component)
-                    child
                 }
             }
         }
 
         nextList.subList(commonAncestorIndex, nextList.size).apply {
             if (this.size > 1) {
-                reduce { parent, child ->
+                this.windowed(2).forEach { (parent: Route, child: Route) ->
                     parent.component.onSwapInChild(child.name, child.component, emptyMap())
-                    child
                 }
             }
         }

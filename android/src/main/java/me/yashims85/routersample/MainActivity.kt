@@ -89,14 +89,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+            R.id.nav_top -> {
+                router.push("/")
             }
             R.id.nav_gallery -> {
                 router.push("/gallery")
             }
-            R.id.nav_slideshow -> {
-
+            R.id.nav_gallery_detail -> {
+                router.push("/gallery/aaaa")
             }
             R.id.nav_manage -> {
 
