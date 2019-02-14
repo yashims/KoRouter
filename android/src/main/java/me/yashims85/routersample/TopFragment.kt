@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import me.yashims85.korouter.Presenter
 
-
 class TopFragment : Fragment(), Presenter {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_top, container, false)
@@ -18,7 +17,7 @@ class TopFragment : Fragment(), Presenter {
         Log.d("korouter", "TopFragment@onSwapInChild name: $name")
         if (child is Fragment) {
             Log.d("korouter", "TopFragment@onSwapInChild child:$child")
-            this.fragmentManager?.beginTransaction()?.apply {
+            App.fragmentManager.get()?.beginTransaction()?.apply {
                 replace(R.id.content_main, child)
                 commit()
             }

@@ -16,6 +16,7 @@ import me.yashims85.korouter.KoRouter
 import me.yashims85.korouter.OutOfHistoryRangeException
 import me.yashims85.korouter.Presenter
 import me.yashims85.korouter.Route
+import java.lang.ref.WeakReference
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, Presenter {
 
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         App.router = router
+        App.fragmentManager = WeakReference(this.supportFragmentManager)
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

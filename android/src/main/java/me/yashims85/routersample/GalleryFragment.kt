@@ -1,6 +1,5 @@
 package me.yashims85.routersample
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
@@ -53,11 +52,9 @@ class GalleryFragment : Fragment(), Presenter {
         Log.d("korouter", "TopFragment@onSwapInChild name: $name")
         if (child is DialogFragment) {
             Log.d("korouter", "TopFragment@onSwapInChild child:$child")
-            child.show(this.childFragmentManager, "Please Select")
-//            this.fragmentManager?.beginTransaction()?.apply {
-//                replace(R.id.content_main, child)
-//                commit()
-//            }
+            App.fragmentManager.get()?.apply {
+                child.show(this, "Please Select")
+            }
         }
     }
 

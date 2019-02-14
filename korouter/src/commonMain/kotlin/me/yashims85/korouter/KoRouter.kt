@@ -1,6 +1,5 @@
 package me.yashims85.korouter
 
-import me.yashims85.util.Log
 import kotlin.math.min
 
 class KoRouter(routes: List<Route>) {
