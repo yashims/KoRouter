@@ -1,7 +1,7 @@
-package me.yashims85.routersample
+package me.yashims.routersample
 
 import android.support.v4.app.FragmentManager
-import me.yashims85.korouter.KoRouter
+import me.yashims.korouter.KoRouter
 import java.lang.ref.WeakReference
 
 object App {

@@ -1,11 +1,11 @@
-package me.yashims85.routersample
+package me.yashims.routersample
 
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v7.app.AlertDialog
-import me.yashims85.korouter.Presenter
+import me.yashims.korouter.Presenter
 
 class GalleryDialogFragment : DialogFragment(), Presenter {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

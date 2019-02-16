@@ -1,4 +1,4 @@
-package me.yashims85.routersample
+package me.yashims.routersample
 
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
@@ -10,8 +10,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import me.yashims85.korouter.Presenter
-import me.yashims85.routersample.dummy.DummyContent
+import me.yashims.korouter.Presenter
+import me.yashims.routersample.dummy.DummyContent
 
 /**
  * A fragment representing a list of Items.

@@ -1,4 +1,4 @@
-package me.yashims85.routersample
+package me.yashims.routersample
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import me.yashims85.korouter.Presenter
+import me.yashims.korouter.Presenter
 
 class TopFragment : Fragment(), Presenter {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

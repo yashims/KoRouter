@@ -1,4 +1,4 @@
-package me.yashims85.korouter
+package me.yashims.korouter
 
 data class Route(
     val path: String,

@@ -1,4 +1,4 @@
-package me.yashims85.routersample
+package me.yashims.routersample
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.gallery_item.view.*
-import me.yashims85.routersample.dummy.DummyContent.DummyItem
+import me.yashims.routersample.dummy.DummyContent.DummyItem
 
 class GalleryRecyclerViewAdapter(
     private val mValues: List<DummyItem>

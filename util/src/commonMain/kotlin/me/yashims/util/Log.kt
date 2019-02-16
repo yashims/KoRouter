@@ -1,4 +1,4 @@
-package me.yashims85.util
+package me.yashims.util
 
 internal enum class LogLevel {
     DEBUG, WARN, ERROR

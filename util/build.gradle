@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-multiplatform'
 }
 
-group "me.yashims85"
+group "me.yashims"
 version "0.0.1"
 
 ext {

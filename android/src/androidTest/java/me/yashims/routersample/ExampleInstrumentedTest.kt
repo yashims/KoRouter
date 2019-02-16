@@ -1,4 +1,4 @@
-package me.yashims85.routersample
+package me.yashims.routersample
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("me.yashims85.routersample", appContext.packageName)
+        assertEquals("me.yashims.routersample", appContext.packageName)
     }
 }

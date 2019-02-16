@@ -1,4 +1,4 @@
-package me.yashims85.korouter
+package me.yashims.korouter
 
 class Matcher(routes: List<Route>) {
 

@@ -1,4 +1,4 @@
-package me.yashims85.routersample
+package me.yashims.routersample
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -12,10 +12,10 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import me.yashims85.korouter.KoRouter
-import me.yashims85.korouter.OutOfHistoryRangeException
-import me.yashims85.korouter.Presenter
-import me.yashims85.korouter.Route
+import me.yashims.korouter.KoRouter
+import me.yashims.korouter.OutOfHistoryRangeException
+import me.yashims.korouter.Presenter
+import me.yashims.korouter.Route
 import java.lang.ref.WeakReference
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, Presenter {
