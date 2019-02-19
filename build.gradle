@@ -7,6 +7,7 @@ buildscript {
         jcenter()
         mavenCentral()
         maven { url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies" }
+
     }
 
     dependencies {
@@ -15,6 +16,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:$kotlin_version" // kotlin-mpp
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
@@ -22,7 +25,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven { url "https://dl.bintray.com/yashims/korouter" }
     }
 }
 

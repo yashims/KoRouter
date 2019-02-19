@@ -1,10 +1,14 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-multiplatform'
+    id 'com.jfrog.bintray'
+    id 'com.github.dcendents.android-maven'
 }
 
 group "me.yashims"
 version "0.0.1"
+archivesBaseName = 'korouter'
+
 
 ext {
     library_build = 1
@@ -125,3 +129,54 @@ configurations {
 //}
 //
 //tasks.build.dependsOn packForXCode
+
+def libraryId = 'korouter-android'
+def siteUrl = 'https://github.com/yashims/kotlin-router'
+def githubUrl = 'https://github.com/yashims/kotlin-router'
+bintray {
+
+    user = project.hasProperty('bintray_user') ? bintray_user : ''
+    key = project.hasProperty('bintray_key') ? bintray_key : ''
+    configurations = ['archives']
+
+    pkg {
+        repo = 'maven'
+        name = project.group + '.' + libraryId
+        licenses = ['MIT']
+        websiteUrl = siteUrl
+        issueTrackerUrl = githubUrl + '/blob/master/LICENSE'
+        vcsUrl = githubUrl + '.git'
+        issueTrackerUrl = githubUrl + '/issues'
+        publicDownloadNumbers = true
+        version {
+            name = project.version
+        }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name libraryId
+            url siteUrl
+
+            packaging 'aar'
+            groupId project.group
+            artifactId libraryId
+            version project.version
+
+            licenses {
+                license {
+                    name 'The MIT License'
+                    url 'https://opensource.org/licenses/MIT'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection githubUrl + '.git'
+                url githubUrl
+            }
+        }
+    }
+}
+
