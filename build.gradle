@@ -7,7 +7,6 @@ buildscript {
         jcenter()
         mavenCentral()
         maven { url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies" }
-
     }
 
     dependencies {
@@ -25,7 +24,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://dl.bintray.com/yashims/korouter" }
+        maven { url "https://dl.bintray.com/yashims/maven" }
     }
 }
 
