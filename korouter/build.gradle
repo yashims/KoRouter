@@ -1,51 +1,21 @@
 plugins {
-    id 'com.android.library'
     id 'kotlin-multiplatform'
-    id 'com.jfrog.bintray'
-    id 'com.github.dcendents.android-maven'
+//    id 'com.jfrog.bintray'
+//    id 'com.github.dcendents.android-maven'
+}
+repositories {
+    mavenCentral()
 }
 
 group "me.yashims"
 version "0.0.1"
 archivesBaseName = 'korouter'
 
+apply plugin: 'maven-publish'
 
 ext {
     library_build = 1
     library_name = group + ".korouter"
-}
-
-android {
-    compileSdkVersion 28
-    archivesBaseName = library_name
-
-    defaultConfig {
-        minSdkVersion 19
-    }
-
-    sourceSets {
-        main {
-            def root = "src/androidMain"
-            setRoot(root)
-            java.srcDirs += "${root}/kotlin"
-        }
-    }
-}
-
-dependencies {
-    // Specify Kotlin/JVM stdlib dependency.
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7'
-
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.jetbrains.kotlin:kotlin-test'
-    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
-
-    androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation 'org.jetbrains.kotlin:kotlin-test'
-    androidTestImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
-
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
 kotlin {
@@ -61,7 +31,7 @@ kotlin {
 
 //        // com.android.libraryをimportしてないとpresets.android出現しない
 //        fromPreset(presets.jvm, 'android')
-        fromPreset(presets.android, 'android')
+//        fromPreset(presets.android, 'android')
         fromPreset(presets.jvm, 'jvm')
     }
 
@@ -73,21 +43,14 @@ kotlin {
          */
         commonMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
+                implementation "org.jetbrains.kotlin:kotlin-stdlib-common"
                 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutines_version"
-            }
-        }
-
-        androidMain {
-            dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
             }
         }
 
         jvmMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+                implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
                 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
             }
         }
@@ -106,6 +69,13 @@ kotlin {
             }
         }
 
+        jvmTest {
+            dependencies {
+                implementation 'org.jetbrains.kotlin:kotlin-test'
+                implementation 'org.jetbrains.kotlin:kotlin-test-junit'
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+            }
+        }
     }
 }
 
@@ -136,6 +106,7 @@ configurations {
 //
 //tasks.build.dependsOn packForXCode
 
+/*
 def libraryId = 'korouter'
 def siteUrl = 'https://github.com/yashims/kotlin-router'
 def githubUrl = 'https://github.com/yashims/kotlin-router'
@@ -186,4 +157,5 @@ install {
         }
     }
 }
+*/
 
