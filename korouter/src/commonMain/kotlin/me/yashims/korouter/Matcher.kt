@@ -61,6 +61,6 @@ class Matcher(routes: List<Route>) {
                     else -> it
                 }
             }
-            ?: throw RouteNotMatchException()
+            ?: throw RouteNotMatchException("No matching $location in ${route.fullPath()} children")
     }
 }

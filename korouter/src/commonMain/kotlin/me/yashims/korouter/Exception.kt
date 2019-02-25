@@ -1,4 +1,5 @@
 package me.yashims.korouter
 
-class RouteNotMatchException : Exception()
+class RouteNotMatchException(override val message: String) : Exception()
+
 class OutOfHistoryRangeException : Exception()
