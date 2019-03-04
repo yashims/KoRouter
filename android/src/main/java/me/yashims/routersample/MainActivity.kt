@@ -15,25 +15,35 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import me.yashims.korouter.KoRouter
 import me.yashims.korouter.OutOfHistoryRangeException
 import me.yashims.korouter.Presenter
-import me.yashims.korouter.Route
 import java.lang.ref.WeakReference
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, Presenter {
 
-    private val router: KoRouter = KoRouter(
-        listOf(
-            Route(
-                "", "", this, children = mutableListOf(
-                    Route("/", "top", TopFragment()),
-                    Route(
-                        "gallery", "gallery", GalleryFragment(), children = mutableListOf(
-                            Route(":detail", "detail", GalleryDialogFragment())
-                        )
-                    )
-                )
-            )
-        )
-    )
+    private val router: KoRouter = KoRouter {
+        route("") {
+            name = ""
+            component = this@MainActivity
+
+            children {
+                route("/") {
+                    name = "top"
+                    component = TopFragment()
+                }
+
+                route("gallery") {
+                    name = "gallery"
+                    component = GalleryFragment()
+
+                    children {
+                        route(":detail") {
+                            name = "detail"
+                            component = GalleryDialogFragment()
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

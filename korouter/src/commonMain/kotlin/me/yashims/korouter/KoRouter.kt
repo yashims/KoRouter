@@ -69,4 +69,54 @@ class KoRouter(routes: List<Route>) {
             }
         }
     }
+
+    companion object {
+        operator fun invoke(cb: ChildrenBuilder.() -> Unit): KoRouter {
+            val builder = ChildrenBuilder(cb)
+            return KoRouter(builder.build())
+        }
+    }
+
+    class ChildrenBuilder {
+        private val routes: MutableList<Route> = mutableListOf()
+
+        fun route(path: String, cb: RouteBuilder.() -> Unit) {
+            routes.add(RouteBuilder(path, cb).build())
+        }
+
+        fun build(): MutableList<Route> = routes
+
+        companion object {
+            operator fun invoke(cb: ChildrenBuilder.() -> Unit): ChildrenBuilder {
+                return ChildrenBuilder().apply(cb)
+            }
+        }
+    }
+
+    class RouteBuilder {
+        lateinit var path: String
+        lateinit var name: String
+        lateinit var component: Presenter
+        private var children: MutableList<Route>? = null
+
+        fun children(cb: ChildrenBuilder.() -> Unit) {
+            children = ChildrenBuilder(cb).build()
+        }
+
+        fun build(): Route = Route(
+            path = path,
+            name = name,
+            component = component,
+            children = children
+        )
+
+        companion object {
+            operator fun invoke(path: String, cb: RouteBuilder.() -> Unit): RouteBuilder {
+                return RouteBuilder().apply {
+                    this.path = path
+                    this.cb()
+                }
+            }
+        }
+    }
 }
