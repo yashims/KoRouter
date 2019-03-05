@@ -43,7 +43,8 @@ class KoRouter(routes: List<Route>) {
     }
 
     private suspend fun differDispatch(prev: Route, next: Route) {
-        val (prevList, nextList) = prev.fullNodes() to next.fullNodes()
+        val prevList = prev.fullNodes()
+        val nextList = next.fullNodes()
         val minSynonymPathIndex = min(prevList.lastIndex, nextList.lastIndex)
         val commonAncestorIndex: Int = (0..minSynonymPathIndex).lastOrNull {
             prevList[it] == nextList[it]
@@ -51,9 +52,10 @@ class KoRouter(routes: List<Route>) {
 
         prevList.subList(commonAncestorIndex, prevList.size).apply {
             if (this.size > 1) {
-                this.windowed(2).forEach { (parent: Route, child: Route) ->
+                this.windowed(2, 1, partialWindows = true).forEach { pair ->
                     GlobalScope.launch(Dispatchers.Main) {
-                        parent.component.onSwapOutChild(child.name, child.component)
+                        val child: Route? = pair.getOrNull(1)
+                        pair[0].component.onSwapOutChild(child?.name, child?.component)
                     }.join()
                 }
             }
@@ -61,9 +63,10 @@ class KoRouter(routes: List<Route>) {
 
         nextList.subList(commonAncestorIndex, nextList.size).apply {
             if (this.size > 1) {
-                this.windowed(2).forEach { (parent: Route, child: Route) ->
+                this.windowed(2, 1, partialWindows = true).forEach { pair ->
                     GlobalScope.launch(Dispatchers.Main) {
-                        parent.component.onSwapInChild(child.name, child.component, emptyMap())
+                        val child: Route? = pair.getOrNull(1)
+                        pair[0].component.onSwapInChild(child?.name, child?.component, emptyMap())
                     }.join()
                 }
             }

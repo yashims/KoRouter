@@ -29,8 +29,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation fileTree(dir: '../korouter/build/libs', include: ['*.jar'])
-//    implementation project(':korouter')
+//    implementation fileTree(dir: '../korouter/build/libs', include: ['*.jar'])
+    implementation project(':korouter')
 //    implementation "me.yashims:korouter:0.0.1"
 
     implementation project(':util')

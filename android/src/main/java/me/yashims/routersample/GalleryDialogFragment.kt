@@ -28,11 +28,11 @@ class GalleryDialogFragment : DialogFragment(), Presenter {
         dismiss()
     }
 
-    override fun onSwapInChild(name: String, child: Presenter, args: Map<String, String>) {
+    override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>) {
         Log.d("korouter", "GalleryDialogFragment@onSwapInChild name: $name child:$child")
     }
 
-    override fun onSwapOutChild(name: String, child: Presenter) {
+    override fun onSwapOutChild(name: String?, child: Presenter?) {
         Log.d("korouter", "GalleryDialogFragment@onSwapOutChild name: $name child:$child")
     }
 }

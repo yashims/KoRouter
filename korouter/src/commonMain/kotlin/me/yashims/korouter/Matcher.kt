@@ -3,9 +3,9 @@ package me.yashims.korouter
 class Matcher(routes: List<Route>) {
 
     private val tree: Route = Route("", "", object : Presenter {
-        override fun onSwapInChild(name: String, child: Presenter, args: Map<String, String>) {}
+        override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>) {}
 
-        override fun onSwapOutChild(name: String, child: Presenter) {}
+        override fun onSwapOutChild(name: String?, child: Presenter?) {}
     })
 
     private val locationMatcher: Regex = Regex("^/?(:.+)")
