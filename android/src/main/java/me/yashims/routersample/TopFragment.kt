@@ -14,9 +14,8 @@ class TopFragment : Fragment(), Presenter {
     }
 
     override fun onSwapInChild(name: String, child: Presenter, args: Map<String, String>) {
-        Log.d("korouter", "TopFragment@onSwapInChild name: $name")
+        Log.d("korouter", "TopFragment@onSwapInChild name: $name child:$child")
         if (child is Fragment) {
-            Log.d("korouter", "TopFragment@onSwapInChild child:$child")
             App.fragmentManager.get()?.beginTransaction()?.apply {
                 replace(R.id.content_main, child)
                 commit()

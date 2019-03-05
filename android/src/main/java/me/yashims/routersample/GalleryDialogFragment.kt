@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v7.app.AlertDialog
+import android.util.Log
 import me.yashims.korouter.Presenter
 
 class GalleryDialogFragment : DialogFragment(), Presenter {
@@ -28,8 +29,10 @@ class GalleryDialogFragment : DialogFragment(), Presenter {
     }
 
     override fun onSwapInChild(name: String, child: Presenter, args: Map<String, String>) {
+        Log.d("korouter", "GalleryDialogFragment@onSwapInChild name: $name child:$child")
     }
 
     override fun onSwapOutChild(name: String, child: Presenter) {
+        Log.d("korouter", "GalleryDialogFragment@onSwapOutChild name: $name child:$child")
     }
 }

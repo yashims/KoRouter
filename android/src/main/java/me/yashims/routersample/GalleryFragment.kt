@@ -49,9 +49,8 @@ class GalleryFragment : Fragment(), Presenter {
     }
 
     override fun onSwapInChild(name: String, child: Presenter, args: Map<String, String>) {
-        Log.d("korouter", "TopFragment@onSwapInChild name: $name")
+        Log.d("korouter", "GalleryFragment@onSwapInChild name: $name child:$child")
         if (child is DialogFragment) {
-            Log.d("korouter", "TopFragment@onSwapInChild child:$child")
             App.fragmentManager.get()?.apply {
                 child.show(this, "Please Select")
             }
@@ -59,7 +58,7 @@ class GalleryFragment : Fragment(), Presenter {
     }
 
     override fun onSwapOutChild(name: String, child: Presenter) {
-        Log.d("korouter", "TopFragment@onSwapOutChild name:$name, child:$child")
+        Log.d("korouter", "GalleryFragment@onSwapOutChild name:$name, child:$child")
     }
 
     companion object {
