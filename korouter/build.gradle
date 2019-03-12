@@ -2,7 +2,6 @@ plugins {
     id 'com.android.library'
     id 'kotlin-multiplatform'
     id 'com.jfrog.bintray'
-    id 'com.github.dcendents.android-maven'
 }
 
 group "me.yashims"
@@ -147,7 +146,6 @@ bintray {
 
     pkg {
         repo = 'maven'
-//        name = project.group + '.' + libraryId
         name = libraryId
         licenses = ['MIT']
         websiteUrl = siteUrl
@@ -157,32 +155,6 @@ bintray {
         publicDownloadNumbers = true
         version {
             name = project.version
-        }
-    }
-}
-
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            name libraryId
-            url siteUrl
-
-            packaging 'jar'
-            groupId project.group
-            artifactId libraryId
-            version project.version
-
-            licenses {
-                license {
-                    name 'The MIT License'
-                    url 'https://opensource.org/licenses/MIT'
-                    distribution 'repo'
-                }
-            }
-            scm {
-                connection githubUrl + '.git'
-                url githubUrl
-            }
         }
     }
 }
