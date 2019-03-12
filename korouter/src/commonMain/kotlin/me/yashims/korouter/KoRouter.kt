@@ -1,5 +1,6 @@
 package me.yashims.korouter
 
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -12,8 +13,18 @@ class KoRouter(routes: List<Route>) {
     private var currentRoute: Route = matcher.root()
 
     fun push(location: String) {
+        // TODO: Use fixed thread
         GlobalScope.launch {
             history.push(location)
+            val prevRoute = currentRoute
+            currentRoute = matcher.match(location)
+            differDispatch(prevRoute, currentRoute)
+        }
+    }
+
+    fun replace(location: String) {
+        GlobalScope.launch {
+            history.replace(location)
             val prevRoute = currentRoute
             currentRoute = matcher.match(location)
             differDispatch(prevRoute, currentRoute)
