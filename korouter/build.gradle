@@ -54,12 +54,12 @@ kotlin {
 //
 //        fromPreset(iOSTarget, 'iOS') {
 //            compilations.main.outputKinds('FRAMEWORK')
-//            // TODO: iOS Bitcodeを有効にする -> Kotlin v1.3.20 で自動でONになってるはず
-//            compilations.main.extraOpts '-Xembed-bitcode' or '-Xembed-bitcode-marker'
 //        }
+        fromPreset(presets.iosX64, 'ios') {
+            compilations.main.outputKinds('FRAMEWORK')
+        }
 
-//        // com.android.libraryをimportしてないとpresets.android出現しない
-//        fromPreset(presets.jvm, 'android')
+        // com.android.libraryをimportしてないとpresets.android出現しない
         fromPreset(presets.android, 'android')
         fromPreset(presets.jvm, 'jvm')
     }
@@ -91,12 +91,12 @@ kotlin {
             }
         }
 
-//        iOSMain {
-//            dependencies {
-//                implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
-//                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines_version"
-//            }
-//        }
+        iosMain {
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines_version"
+            }
+        }
 
         commonTest {
             dependencies {
@@ -113,27 +113,50 @@ configurations {
     compileClasspath
 }
 
-//// TODO: iOSやるときまでお休み
 // SEE: https://github.com/JetBrains/kotlin-mpp-example/blob/master/greeting/build.gradle
-//task packForXCode(type: Sync) {
-//    final File frameworkDir = new File(buildDir, "xcode-frameworks")
-//    final String mode = project.findProperty("XCODE_CONFIGRATION")?.toUpperCase() ?: 'DEBUG'
-//
-//    inputs.property "mode", mode
-//    dependsOn kotlin.targets.iOS.compilations.main.linkTaskName("FRAMEWORK", mode)
-//
-//    from { kotlin.targets.iOS.compilations.main.getBinary("FRAMEWORK", mode).parentFile }
-//    into frameworkDir
-//
-//    doLast {
-//        new File(frameworkDir, 'gradlew').with {
-//            text = "#!/bin/bash\nexport 'JAVA_HOME=${System.getProperty("java.home")}'\ncd '${rootProject.rootDir}'\n./gradlew \$@\n"
-//            setExecutable(true)
-//        }
-//    }
-//}
-//
-//tasks.build.dependsOn packForXCode
+/*
+task packForXCode(type: Sync) {
+    final File frameworkDir = new File(buildDir, "xcode-frameworks")
+    final String mode = project.findProperty("XCODE_CONFIGRATION")?.toUpperCase() ?: 'DEBUG'
+
+    inputs.property "mode", mode
+    dependsOn kotlin.targets.iOS.compilations.main.linkTaskName("FRAMEWORK", mode)
+
+    from { kotlin.targets.iOS.compilations.main.getBinary("FRAMEWORK", mode).parentFile }
+    into frameworkDir
+
+    doLast {
+        new File(frameworkDir, 'gradlew').with {
+            text = "#!/bin/bash\nexport 'JAVA_HOME=${System.getProperty("java.home")}'\ncd '${rootProject.rootDir}'\n./gradlew \$@\n"
+            setExecutable(true)
+        }
+    }
+}
+
+tasks.build.dependsOn packForXCode
+*/
+
+// This task attaches native framework built from ios module to Xcode project
+// (see iosApp directory). Don't run this task directly,
+// Xcode runs this task itself during its build process.
+// Before opening the project from iosApp directory in Xcode,
+// make sure all Gradle infrastructure exists (gradle.wrapper, gradlew).
+task copyFramework {
+    def buildType = project.findProperty("kotlin.build.type") ?: "DEBUG"
+    def target = project.findProperty("kotlin.target") ?: "ios"
+    dependsOn "link${buildType.toLowerCase().capitalize()}Framework${target.capitalize()}"
+
+    doLast {
+        def srcFile = kotlin.targets."$target".compilations.main.getBinary("FRAMEWORK", buildType)
+        def targetDir = getProperty("configuration.build.dir")
+        copy {
+            from srcFile.parent
+            into targetDir
+            include 'app.framework/**'
+            include 'app.framework.dSYM'
+        }
+    }
+}
 
 def libraryId = 'korouter'
 def siteUrl = 'https://github.com/yashims/kotlin-router'
