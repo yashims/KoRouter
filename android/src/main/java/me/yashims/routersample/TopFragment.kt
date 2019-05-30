@@ -13,8 +13,8 @@ class TopFragment : Fragment(), Presenter {
         return inflater.inflate(R.layout.fragment_top, container, false)
     }
 
-    override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>) {
-        Log.d("korouter", "TopFragment@onSwapInChild name: $name child:$child")
+    override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>?) {
+        Log.d("korouter", "TopFragment@onSwapInChild name: $name child:$child args:$args")
         if (child is Fragment) {
             App.fragmentManager.get()?.beginTransaction()?.apply {
                 replace(R.id.content_main, child)

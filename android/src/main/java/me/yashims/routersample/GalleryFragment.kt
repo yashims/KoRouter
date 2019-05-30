@@ -48,8 +48,8 @@ class GalleryFragment : Fragment(), Presenter {
         return view
     }
 
-    override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>) {
-        Log.d("korouter", "GalleryFragment@onSwapInChild name: $name child:$child")
+    override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>?) {
+        Log.d("korouter", "GalleryFragment@onSwapInChild name: $name child:$child args:$args")
         if (child is DialogFragment) {
             App.fragmentManager.get()?.apply {
                 child.show(this, "Please Select")

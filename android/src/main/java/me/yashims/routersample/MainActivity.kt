@@ -125,8 +125,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>) {
-        Log.d("korouter", "MainActivity@onSwapInChild name: $name child:$child")
+    override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>?) {
+        Log.d("korouter", "MainActivity@onSwapInChild name: $name child:$child args:$args")
         if (child is Fragment) {
             this.supportFragmentManager.beginTransaction().apply {
                 replace(R.id.content_main, child)
