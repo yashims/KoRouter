@@ -1,24 +1,28 @@
 package me.yashims.korouter
 
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import me.yashims.korouter.matcher.RouteMatchResult
 import kotlin.math.min
 
 class KoRouter(routes: List<Route>) {
 
     private val matcher: Matcher = Matcher(routes)
     private val history: History = History()
-    private var currentRoute: Route = matcher.root()
+    var currentRoute: Route = matcher.root()
+        private set(value) {
+            field = value
+        }
 
     fun push(location: String) {
         // TODO: Use fixed thread
         GlobalScope.launch {
             history.push(location)
             val prevRoute = currentRoute
-            currentRoute = matcher.match(location)
-            differDispatch(prevRoute, currentRoute)
+            val matches: RouteMatchResult = matcher.match(location)
+            currentRoute = matches.route
+            differDispatch(prevRoute, currentRoute, matches.param)
         }
     }
 
@@ -26,8 +30,9 @@ class KoRouter(routes: List<Route>) {
         GlobalScope.launch {
             history.replace(location)
             val prevRoute = currentRoute
-            currentRoute = matcher.match(location)
-            differDispatch(prevRoute, currentRoute)
+            val matches: RouteMatchResult = matcher.match(location)
+            currentRoute = matches.route
+            differDispatch(prevRoute, currentRoute, matches.param)
         }
     }
 
@@ -35,8 +40,9 @@ class KoRouter(routes: List<Route>) {
         GlobalScope.launch {
             val location = history.back()
             val prevRoute = currentRoute
-            currentRoute = matcher.match(location)
-            differDispatch(prevRoute, currentRoute)
+            val matches: RouteMatchResult = matcher.match(location)
+            currentRoute = matches.route
+            differDispatch(prevRoute, currentRoute, matches.param)
         }
     }
 
@@ -44,8 +50,9 @@ class KoRouter(routes: List<Route>) {
         GlobalScope.launch {
             val location = history.forward()
             val prevRoute = currentRoute
-            currentRoute = matcher.match(location)
-            differDispatch(prevRoute, currentRoute)
+            val matches: RouteMatchResult = matcher.match(location)
+            currentRoute = matches.route
+            differDispatch(prevRoute, currentRoute, matches.param)
         }
     }
 
@@ -53,7 +60,7 @@ class KoRouter(routes: List<Route>) {
         matcher.addChildren(parentLocation, children)
     }
 
-    private suspend fun differDispatch(prev: Route, next: Route) {
+    private suspend fun differDispatch(prev: Route, next: Route, params: Map<String, String>?) {
         val prevList = prev.fullNodes()
         val nextList = next.fullNodes()
         val minSynonymPathIndex = min(prevList.lastIndex, nextList.lastIndex)
@@ -75,13 +82,22 @@ class KoRouter(routes: List<Route>) {
             }
         }
 
+        val emptyMap: Map<String, String> = emptyMap()
         nextList.subList(commonAncestorIndex, nextList.size).apply {
             if (this.size > 1) {
                 // Swap-in call ordered by parent to child.
                 this.windowed(2, 1, partialWindows = true).forEach { pair ->
                     GlobalScope.launch(Dispatchers.Main) {
+                        val parent: Route = pair[0]
                         val child: Route? = pair.getOrNull(1)
-                        pair[0].component.onSwapInChild(child?.name, child?.component, emptyMap())
+
+                        if (child == null) {
+                            // Case of node is leaf in subtree
+                            parent.component.onSwapInChild(null, null, params)
+                        } else {
+                            // Case of node is internal node in subtree
+                            parent.component.onSwapInChild(child.name, child.component, emptyMap)
+                        }
                     }.join()
                 }
             }

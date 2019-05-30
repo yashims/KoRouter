@@ -1,14 +1,16 @@
 package me.yashims.korouter
 
+import me.yashims.korouter.matcher.RouteMatchResult
+
 class Matcher(routes: List<Route>) {
 
     private val tree: Route = Route("", "", object : Presenter {
-        override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>) {}
+        override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>?) {}
 
         override fun onSwapOutChild(name: String?, child: Presenter?) {}
     })
 
-    private val locationMatcher: Regex = Regex("^/?(:.+)")
+    private val locationMatcher: Regex = Regex("""^/?:([^/]+)""")
 
     init {
         addChildren(tree, routes, replaceChildren = true)
@@ -33,10 +35,10 @@ class Matcher(routes: List<Route>) {
     }
 
     fun addChildren(parentLocation: String, children: List<Route>) {
-        addChildren(match(parentLocation), children)
+        addChildren(match(parentLocation).route, children)
     }
 
-    fun match(location: String, route: Route = tree): Route {
+    fun match(location: String, route: Route = tree): RouteMatchResult {
         val splitList = location.split('/', limit = 2)
         var locationSlice = splitList.getOrElse(0) { "" }
         var nextLocation = splitList.getOrElse(1) { "" }
@@ -50,17 +52,33 @@ class Matcher(routes: List<Route>) {
             locationSlice = "/"
         }
 
-        return route.children
-            ?.firstOrNull {
-                it.path == locationSlice || it.path.isBlank() || locationMatcher.matches(it.path)
-            }
-            ?.let {
-                when {
-                    it.path.isBlank() -> match(location, it)
-                    nextLocation.isNotBlank() -> match(nextLocation, it)
-                    else -> it
+        // Search matched node in children
+        val matchNode: RouteMatchResult? = route.children?.run {
+            var param: Map<String, String>? = null
+            firstOrNull {
+                if (it.path == locationSlice || it.path.isBlank()) {
+                    return@firstOrNull true
                 }
+
+                locationMatcher.matchEntire(it.path)?.let { result: MatchResult ->
+                    param = mapOf(result.destructured.component1() to locationSlice)
+                    return@firstOrNull true
+                }
+                false
+            }?.let {
+                RouteMatchResult(it, param)
             }
-            ?: throw RouteNotMatchException("No matching $location in ${route.fullPath()} children")
+
+        }
+        return matchNode?.let {
+            when {
+                // Case of abstract inner node.(everything blank match)
+                it.route.path.isBlank() -> match(location, it.route).copy(param = it.param)
+                // Case of inner node.
+                nextLocation.isNotBlank() -> match(nextLocation, it.route).copy(param = it.param)
+                // Case of leaf node.
+                else -> it
+            }
+        } ?: throw RouteNotMatchException("No matching $location in ${route.fullPath()} children")
     }
 }
