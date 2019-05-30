@@ -91,13 +91,8 @@ class KoRouter(routes: List<Route>) {
                         val parent: Route = pair[0]
                         val child: Route? = pair.getOrNull(1)
 
-                        if (child == null) {
-                            // Case of node is leaf in subtree
-                            parent.component.onSwapInChild(null, null, params)
-                        } else {
-                            // Case of node is internal node in subtree
-                            parent.component.onSwapInChild(child.name, child.component, emptyMap)
-                        }
+                        // Case of node is internal node in subtree
+                        parent.component.onSwapInChild(child?.name, child?.component, params)
                     }.join()
                 }
             }
