@@ -82,7 +82,6 @@ class KoRouter(routes: List<Route>) {
             }
         }
 
-        val emptyMap: Map<String, String> = emptyMap()
         nextList.subList(commonAncestorIndex, nextList.size).apply {
             if (this.size > 1) {
                 // Swap-in call ordered by parent to child.
