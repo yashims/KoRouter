@@ -3,7 +3,7 @@ package me.yashims.korouter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import me.yashims.korouter.matcher.RouteMatchResult
+import me.yashims.korouter.matcher.RouterMatchResult
 import kotlin.math.min
 
 class KoRouter(routes: List<Route>) {
@@ -20,7 +20,7 @@ class KoRouter(routes: List<Route>) {
         GlobalScope.launch {
             history.push(location)
             val prevRoute = currentRoute
-            val matches: RouteMatchResult = matcher.match(location)
+            val matches: RouterMatchResult = matcher.match(location)
             currentRoute = matches.route
             differDispatch(prevRoute, currentRoute, matches.param)
         }
@@ -30,7 +30,7 @@ class KoRouter(routes: List<Route>) {
         GlobalScope.launch {
             history.replace(location)
             val prevRoute = currentRoute
-            val matches: RouteMatchResult = matcher.match(location)
+            val matches: RouterMatchResult = matcher.match(location)
             currentRoute = matches.route
             differDispatch(prevRoute, currentRoute, matches.param)
         }
@@ -40,7 +40,7 @@ class KoRouter(routes: List<Route>) {
         GlobalScope.launch {
             val location = history.back()
             val prevRoute = currentRoute
-            val matches: RouteMatchResult = matcher.match(location)
+            val matches: RouterMatchResult = matcher.match(location)
             currentRoute = matches.route
             differDispatch(prevRoute, currentRoute, matches.param)
         }
@@ -50,7 +50,7 @@ class KoRouter(routes: List<Route>) {
         GlobalScope.launch {
             val location = history.forward()
             val prevRoute = currentRoute
-            val matches: RouteMatchResult = matcher.match(location)
+            val matches: RouterMatchResult = matcher.match(location)
             currentRoute = matches.route
             differDispatch(prevRoute, currentRoute, matches.param)
         }

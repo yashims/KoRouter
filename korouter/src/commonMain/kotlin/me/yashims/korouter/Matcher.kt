@@ -1,6 +1,6 @@
 package me.yashims.korouter
 
-import me.yashims.korouter.matcher.RouteMatchResult
+import me.yashims.korouter.matcher.RouterMatchResult
 
 class Matcher(routes: List<Route>) {
 
@@ -38,7 +38,7 @@ class Matcher(routes: List<Route>) {
         addChildren(match(parentLocation).route, children)
     }
 
-    fun match(location: String, route: Route = tree): RouteMatchResult {
+    fun match(location: String, route: Route = tree): RouterMatchResult {
         val splitList = location.split('/', limit = 2)
         var locationSlice = splitList.getOrElse(0) { "" }
         var nextLocation = splitList.getOrElse(1) { "" }
@@ -53,7 +53,7 @@ class Matcher(routes: List<Route>) {
         }
 
         // Search matched node in children
-        val matchNode: RouteMatchResult? = route.children?.run {
+        val matchNode: RouterMatchResult? = route.children?.run {
             var param: Map<String, String>? = null
             firstOrNull {
                 if (it.path == locationSlice || it.path.isBlank()) {
@@ -66,7 +66,7 @@ class Matcher(routes: List<Route>) {
                 }
                 false
             }?.let {
-                RouteMatchResult(it, param)
+                RouterMatchResult(it, param)
             }
 
         }
