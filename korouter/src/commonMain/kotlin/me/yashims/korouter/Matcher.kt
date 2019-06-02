@@ -13,13 +13,13 @@ class Matcher(routes: List<Route>) {
     private val locationMatcher: Regex = Regex("""^/?:([^/]+)""")
 
     init {
-        addChildren(tree, routes, replaceChildren = true)
+        addChildren(tree, routes, replace = true)
     }
 
     fun root(): Route = tree
 
-    fun addChildren(parent: Route, children: List<Route>, replaceChildren: Boolean = false) {
-        if (parent.children == null || replaceChildren) {
+    fun addChildren(parent: Route, children: List<Route>, replace: Boolean = false) {
+        if (parent.children == null || replace) {
             parent.children = mutableListOf()
         }
 
