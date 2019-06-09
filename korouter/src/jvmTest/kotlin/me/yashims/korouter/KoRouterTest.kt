@@ -1,6 +1,11 @@
 package me.yashims.korouter
 
-import kotlin.test.BeforeTest
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
 
 class KoRouterTest {
     private lateinit var router: KoRouter
@@ -10,21 +15,28 @@ class KoRouterTest {
         override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>?) {
             matchedNodeNames.add(name)
             givenArgs = args
+            println("swapin: $name")
         }
 
         override fun onSwapOutChild(name: String?, child: Presenter?) {}
     }
 
-    @BeforeTest
+    @Before
     fun beforeEach() {
         matchedNodeNames = mutableListOf()
         givenArgs = null
         router = KoRouter {
-            route("/") {
-                name = "index"
+            route("") {
+                name = ""
                 component = presenter
 
                 children {
+
+                    route("/") {
+                        name = "index"
+                        component = presenter
+                    }
+
                     route("users") {
                         name = path
                         component = presenter
@@ -51,7 +63,7 @@ class KoRouterTest {
                         }
                     } // route of users
 
-                    route("/news") {
+                    route("news") {
                         name = "news"
                         component = presenter
 
@@ -100,12 +112,16 @@ class KoRouterTest {
 
     }
 
-//    @Test
-//    fun `Matched terminate node should be given null name`() {
-//        router.push("/news")
-//        assertNull(matchedNodeNames.last())
-//    }
-//
+    @Test
+    fun `Matched terminate node should be given null name`() {
+        runBlocking(Dispatchers.Main) {
+            router.push("news")
+            println("hoge")
+            assertTrue(matchedNodeNames.size > 0)
+            assertNull(matchedNodeNames.lastOrNull())
+        }
+    }
+
 //    @Test
 //    fun `Matched upper terminate node should be given child name`() {
 //        router.push("/campaign/0001")

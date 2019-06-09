@@ -100,6 +100,13 @@ kotlin {
                 implementation 'org.jetbrains.kotlin:kotlin-test-annotations-common'
             }
         }
+        jvmTest {
+            dependencies {
+                implementation 'junit:junit:4.12'
+                implementation 'org.jetbrains.kotlin:kotlin-test-common'
+                implementation 'org.jetbrains.kotlin:kotlin-test-annotations-common'
+            }
+        }
 
     }
 }

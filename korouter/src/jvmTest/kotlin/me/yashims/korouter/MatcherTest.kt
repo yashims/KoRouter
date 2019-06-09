@@ -1,8 +1,7 @@
 package me.yashims.korouter
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
-
+import junit.framework.Assert.assertEquals
+import org.junit.Test
 
 class MatcherTest {
     private val presenter: Presenter = object : Presenter {
