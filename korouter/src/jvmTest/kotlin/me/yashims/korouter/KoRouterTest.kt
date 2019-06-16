@@ -1,7 +1,12 @@
 package me.yashims.korouter
 
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -21,8 +26,18 @@ class KoRouterTest {
         override fun onSwapOutChild(name: String?, child: Presenter?) {}
     }
 
+    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
+
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain() // reset main dispatcher to the original Main dispatcher
+        mainThreadSurrogate.close()
+    }
+
     @Before
     fun beforeEach() {
+        Dispatchers.setMain(mainThreadSurrogate)
+
         matchedNodeNames = mutableListOf()
         givenArgs = null
         router = KoRouter {
@@ -113,13 +128,12 @@ class KoRouterTest {
     }
 
     @Test
-    fun `Matched terminate node should be given null name`() {
-        runBlocking(Dispatchers.Main) {
-            router.push("news")
-            println("hoge")
-            assertTrue(matchedNodeNames.size > 0)
-            assertNull(matchedNodeNames.lastOrNull())
-        }
+    fun `Matched terminate node should be given null name`() = runBlockingTest {
+        router.push("news")
+        advanceTimeBy(1_000)
+        println("hoge")
+        assertTrue(matchedNodeNames.size > 0)
+        assertNull(matchedNodeNames.lastOrNull())
     }
 
 //    @Test
