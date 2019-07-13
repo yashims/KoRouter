@@ -1,14 +1,10 @@
 package me.yashims.korouter
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.newSingleThreadContext
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
@@ -20,13 +16,13 @@ class KoRouterTest {
         override fun onSwapInChild(name: String?, child: Presenter?, args: Map<String, String>?) {
             matchedNodeNames.add(name)
             givenArgs = args
-            println("swapin: $name")
         }
 
         override fun onSwapOutChild(name: String?, child: Presenter?) {}
     }
 
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
+//    private val mainThreadSurrogate = Dispatchers.Main
 
     @After
     fun tearDown() {
@@ -35,7 +31,7 @@ class KoRouterTest {
     }
 
     @Before
-    fun beforeEach() {
+    fun setUp() {
         Dispatchers.setMain(mainThreadSurrogate)
 
         matchedNodeNames = mutableListOf()
@@ -128,17 +124,21 @@ class KoRouterTest {
     }
 
     @Test
-    fun `Matched terminate node should be given null name`() = runBlockingTest {
+    fun `Matched terminate node should be given null name`() = runBlocking(Dispatchers.Main) {
         router.push("news")
-        advanceTimeBy(1_000)
-        println("hoge")
-        assertTrue(matchedNodeNames.size > 0)
-        assertNull(matchedNodeNames.lastOrNull())
+        delay(50L)
+        launch(Dispatchers.Main) {
+            assertTrue(matchedNodeNames.size > 0)
+            assertNull(matchedNodeNames.lastOrNull())
+        }.join()
     }
 
-//    @Test
-//    fun `Matched upper terminate node should be given child name`() {
-//        router.push("/campaign/0001")
-//        assertEquals(matchedNodeNames.last { it != null }, "campaign0001")
-//    }
+    @Test
+    fun `Matched upper terminate node should be given child name`() = runBlocking(Dispatchers.Main) {
+        router.push("/campaign/0001")
+        delay(50L)
+        launch(Dispatchers.Main) {
+            assertEquals(matchedNodeNames.last { it != null }, "campaign0001")
+        }.join()
+    }
 }
