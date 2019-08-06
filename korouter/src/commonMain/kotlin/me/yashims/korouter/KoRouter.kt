@@ -3,6 +3,7 @@ package me.yashims.korouter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.yashims.korouter.matcher.RouterMatchResult
 import kotlin.math.min
 
@@ -74,10 +75,10 @@ class KoRouter(routes: List<Route>) {
             if (this.size > 1) {
                 // Swap-out call ordered by child to parent.
                 this.windowed(2, 1, partialWindows = true).reversed().forEach { pair ->
-                    GlobalScope.launch(Dispatchers.Main) {
+                    withContext(Dispatchers.Main) {
                         val child: Route? = pair.getOrNull(1)
                         pair[0].component.onSwapOutChild(child?.name, child?.component)
-                    }.join()
+                    }
                 }
             }
         }
@@ -86,13 +87,13 @@ class KoRouter(routes: List<Route>) {
             if (this.size > 1) {
                 // Swap-in call ordered by parent to child.
                 this.windowed(2, 1, partialWindows = true).forEach { pair ->
-                    GlobalScope.launch(Dispatchers.Main) {
+                    withContext(Dispatchers.Main) {
                         val parent: Route = pair[0]
                         val child: Route? = pair.getOrNull(1)
 
                         // Case of node is internal node in subtree
                         parent.component.onSwapInChild(child?.name, child?.component, params)
-                    }.join()
+                    }
                 }
             }
         }

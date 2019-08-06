@@ -2,6 +2,7 @@ package me.yashims.korouter
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Assert.*
@@ -124,21 +125,17 @@ class KoRouterTest {
     }
 
     @Test
-    fun `Matched terminate node should be given null name`() = runBlocking(Dispatchers.Main) {
+    fun `Matched terminate node should be given null name`() = runBlockingTest {
         router.push("news")
         delay(50L)
-        launch(Dispatchers.Main) {
-            assertTrue(matchedNodeNames.size > 0)
-            assertNull(matchedNodeNames.lastOrNull())
-        }.join()
+        assertTrue(matchedNodeNames.size > 0)
+        assertNull(matchedNodeNames.lastOrNull())
     }
 
     @Test
-    fun `Matched upper terminate node should be given child name`() = runBlocking(Dispatchers.Main) {
+    fun `Matched upper terminate node should be given child name`() = runBlockingTest {
         router.push("/campaign/0001")
         delay(50L)
-        launch(Dispatchers.Main) {
-            assertEquals(matchedNodeNames.last { it != null }, "campaign0001")
-        }.join()
+        assertEquals(matchedNodeNames.last { it != null }, "campaign0001")
     }
 }
