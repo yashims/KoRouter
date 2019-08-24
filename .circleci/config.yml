@@ -1,42 +1,32 @@
-# Java Gradle CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-java/ for more details
-#
 version: 2
 jobs:
   build:
+    working_directory: ~/code
     docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
-
+      - image: circleci/android:api-28
     environment:
-      # Customize the JVM maximum heap limit
       JVM_OPTS: -Xmx3200m
-      TERM: dumb
-
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: gradle dependencies
-
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "korouter/build.gradle" }}
+      #      - run:
+      #         name: Chmod パーミッション # Gradlew Dependencies のパーミッションが失敗する場合は、これを使用します
+      #         command: sudo chmod +x ./gradlew
+      - run:
+          name: 依存関係をダウンロード
+          command: ./gradlew androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "korouter/build.gradle" }}
+      - run:
+          name: テストを実行
+          command: ./gradlew lint test
+      - store_artifacts: # アーティファクト (https://circleci.com/docs/ja/2.0/artifacts/) に表示するため
+          path: korouter/build/reports
+          destination: reports
+      - store_test_results: # テストサマリー (https://circleci.com/docs/ja/2.0/collect-test-data/) に表示するため
+          path: android/build/test-results
+      # デプロイ例については https://circleci.com/docs/ja/2.0/deployment-integrations/ を参照してください
 
-      # run tests!
-      - run: gradle test
