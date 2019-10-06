@@ -1,13 +1,10 @@
 package me.yashims.korouter
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import me.yashims.korouter.matcher.RouterMatchResult
 import kotlin.math.min
 
-class KoRouter(routes: List<Route>) {
+class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     private val matcher: Matcher = Matcher(routes)
     private val history: History = History()
@@ -16,45 +13,36 @@ class KoRouter(routes: List<Route>) {
             field = value
         }
 
-    fun push(location: String) {
-        // TODO: Use fixed thread
-        GlobalScope.launch {
-            history.push(location)
-            val prevRoute = currentRoute
-            val matches: RouterMatchResult = matcher.match(location)
-            currentRoute = matches.route
-            differDispatch(prevRoute, currentRoute, matches.param)
-        }
+    fun push(location: String) = launch {
+        history.push(location)
+        val prevRoute = currentRoute
+        val matches: RouterMatchResult = matcher.match(location)
+        currentRoute = matches.route
+        differDispatch(prevRoute, currentRoute, matches.param)
     }
 
-    fun replace(location: String) {
-        GlobalScope.launch {
-            history.replace(location)
-            val prevRoute = currentRoute
-            val matches: RouterMatchResult = matcher.match(location)
-            currentRoute = matches.route
-            differDispatch(prevRoute, currentRoute, matches.param)
-        }
+    fun replace(location: String) = launch {
+        history.replace(location)
+        val prevRoute = currentRoute
+        val matches: RouterMatchResult = matcher.match(location)
+        currentRoute = matches.route
+        differDispatch(prevRoute, currentRoute, matches.param)
     }
 
-    fun back() {
-        GlobalScope.launch {
-            val location = history.back()
-            val prevRoute = currentRoute
-            val matches: RouterMatchResult = matcher.match(location)
-            currentRoute = matches.route
-            differDispatch(prevRoute, currentRoute, matches.param)
-        }
+    fun back() = launch {
+        val location = history.back()
+        val prevRoute = currentRoute
+        val matches: RouterMatchResult = matcher.match(location)
+        currentRoute = matches.route
+        differDispatch(prevRoute, currentRoute, matches.param)
     }
 
-    fun forward() {
-        GlobalScope.launch {
-            val location = history.forward()
-            val prevRoute = currentRoute
-            val matches: RouterMatchResult = matcher.match(location)
-            currentRoute = matches.route
-            differDispatch(prevRoute, currentRoute, matches.param)
-        }
+    fun forward() = launch {
+        val location = history.forward()
+        val prevRoute = currentRoute
+        val matches: RouterMatchResult = matcher.match(location)
+        currentRoute = matches.route
+        differDispatch(prevRoute, currentRoute, matches.param)
     }
 
     fun addChildren(parentLocation: String, children: List<Route>) {
