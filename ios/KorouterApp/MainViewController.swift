@@ -1,7 +1,7 @@
 import UIKit
 import korouter
 
-class ViewController: UIViewController, Presenter {
+class MainViewController: UIViewController, Presenter {
     func onSwapInChild(name: String?, child: Presenter?, args: [String : String]?) {
         NSLog("swap in")
     }
