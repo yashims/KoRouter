@@ -48,17 +48,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F861D7DD207FA40F0085E80D /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F861D7DD207FA40F0085E80D /* KorouterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KorouterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F861D7E0207FA40F0085E80D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F861D7E2207FA40F0085E80D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F861D7E5207FA40F0085E80D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F861D7EA207FA4100085E80D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F861D7EC207FA4100085E80D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F861D7F1207FA4100085E80D /* iosAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F861D7F1207FA4100085E80D /* KorouterAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KorouterAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F861D7F5207FA4100085E80D /* iosAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosAppTests.swift; sourceTree = "<group>"; };
 		F861D7F7207FA4100085E80D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F861D805207FA4200085E80D /* korouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = korouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F861D813207FA4520085E80D /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; name = app; path = ../app; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +82,7 @@
 		F861D7D4207FA40F0085E80D = {
 			isa = PBXGroup;
 			children = (
-				F861D813207FA4520085E80D /* app */,
-				F861D7DF207FA40F0085E80D /* iosApp */,
+				F861D7DF207FA40F0085E80D /* KorouterApp */,
 				F861D7F4207FA4100085E80D /* iosAppTests */,
 				F861D7DE207FA40F0085E80D /* Products */,
 			);
@@ -93,14 +91,14 @@
 		F861D7DE207FA40F0085E80D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F861D7DD207FA40F0085E80D /* iosApp.app */,
-				F861D7F1207FA4100085E80D /* iosAppTests.xctest */,
+				F861D7DD207FA40F0085E80D /* KorouterApp.app */,
+				F861D7F1207FA4100085E80D /* KorouterAppTests.xctest */,
 				F861D805207FA4200085E80D /* korouter.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F861D7DF207FA40F0085E80D /* iosApp */ = {
+		F861D7DF207FA40F0085E80D /* KorouterApp */ = {
 			isa = PBXGroup;
 			children = (
 				F861D7E0207FA40F0085E80D /* AppDelegate.swift */,
@@ -109,7 +107,7 @@
 				F861D7E9207FA4100085E80D /* LaunchScreen.storyboard */,
 				F861D7EC207FA4100085E80D /* Info.plist */,
 			);
-			path = iosApp;
+			path = KorouterApp;
 			sourceTree = "<group>";
 		};
 		F861D7F4207FA4100085E80D /* iosAppTests */ = {
@@ -124,9 +122,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F861D7DC207FA40F0085E80D /* iosApp */ = {
+		F861D7DC207FA40F0085E80D /* KorouterApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F861D7FA207FA4100085E80D /* Build configuration list for PBXNativeTarget "iosApp" */;
+			buildConfigurationList = F861D7FA207FA4100085E80D /* Build configuration list for PBXNativeTarget "KorouterApp" */;
 			buildPhases = (
 				F861D7D9207FA40F0085E80D /* Sources */,
 				F861D7DA207FA40F0085E80D /* Frameworks */,
@@ -138,14 +136,14 @@
 			dependencies = (
 				F861D80B207FA4200085E80D /* PBXTargetDependency */,
 			);
-			name = iosApp;
+			name = KorouterApp;
 			productName = iosApp;
-			productReference = F861D7DD207FA40F0085E80D /* iosApp.app */;
+			productReference = F861D7DD207FA40F0085E80D /* KorouterApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F861D7F0207FA4100085E80D /* iosAppTests */ = {
+		F861D7F0207FA4100085E80D /* KorouterAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F861D7FD207FA4100085E80D /* Build configuration list for PBXNativeTarget "iosAppTests" */;
+			buildConfigurationList = F861D7FD207FA4100085E80D /* Build configuration list for PBXNativeTarget "KorouterAppTests" */;
 			buildPhases = (
 				F861D7ED207FA4100085E80D /* Sources */,
 				F861D7EE207FA4100085E80D /* Frameworks */,
@@ -156,9 +154,9 @@
 			dependencies = (
 				F861D7F3207FA4100085E80D /* PBXTargetDependency */,
 			);
-			name = iosAppTests;
+			name = KorouterAppTests;
 			productName = iosAppTests;
-			productReference = F861D7F1207FA4100085E80D /* iosAppTests.xctest */;
+			productReference = F861D7F1207FA4100085E80D /* KorouterAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F861D804207FA4200085E80D /* korouter */ = {
@@ -197,7 +195,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F861D7D8207FA40F0085E80D /* Build configuration list for PBXProject "iosApp" */;
+			buildConfigurationList = F861D7D8207FA40F0085E80D /* Build configuration list for PBXProject "KorouterApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -210,8 +208,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F861D7DC207FA40F0085E80D /* iosApp */,
-				F861D7F0207FA4100085E80D /* iosAppTests */,
+				F861D7DC207FA40F0085E80D /* KorouterApp */,
+				F861D7F0207FA4100085E80D /* KorouterAppTests */,
 				F861D804207FA4200085E80D /* korouter */,
 			);
 		};
@@ -275,7 +273,7 @@
 /* Begin PBXTargetDependency section */
 		F861D7F3207FA4100085E80D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F861D7DC207FA40F0085E80D /* iosApp */;
+			target = F861D7DC207FA40F0085E80D /* KorouterApp */;
 			targetProxy = F861D7F2207FA4100085E80D /* PBXContainerItemProxy */;
 		};
 		F861D80B207FA4200085E80D /* PBXTargetDependency */ = {
@@ -428,16 +426,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H22D88P4K2;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_FILE = KorouterApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-v";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.iosApp;
+				PRODUCT_BUNDLE_IDENTIFIER = me.yashims.korouterapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -448,16 +447,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H22D88P4K2;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_FILE = KorouterApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-v";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.iosApp;
+				PRODUCT_BUNDLE_IDENTIFIER = me.yashims.korouterapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -479,7 +479,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iosApp.app/iosApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KorouterApp.app/KorouterApp";
 			};
 			name = Debug;
 		};
@@ -499,7 +499,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iosApp.app/iosApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KorouterApp.app/KorouterApp";
 			};
 			name = Release;
 		};
@@ -510,12 +510,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = N84AFCY4RN;
+				DEVELOPMENT_TEAM = H22D88P4K2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "$(SRCROOT)/iosApp/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/KorouterApp/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				KOTLIN_BUILD_TYPE = DEBUG;
 				KOTLIN_TARGET = "";
@@ -526,10 +526,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.app;
+				PRODUCT_BUNDLE_IDENTIFIER = me.yashims.korouter;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -543,12 +543,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = N84AFCY4RN;
+				DEVELOPMENT_TEAM = H22D88P4K2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "$(SRCROOT)/iosApp/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/KorouterApp/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				KOTLIN_BUILD_TYPE = RELEASE;
 				KOTLIN_TARGET = "";
@@ -559,10 +559,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.app;
+				PRODUCT_BUNDLE_IDENTIFIER = me.yashims.korouter;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -572,7 +572,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F861D7D8207FA40F0085E80D /* Build configuration list for PBXProject "iosApp" */ = {
+		F861D7D8207FA40F0085E80D /* Build configuration list for PBXProject "KorouterApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F861D7F8207FA4100085E80D /* Debug */,
@@ -581,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F861D7FA207FA4100085E80D /* Build configuration list for PBXNativeTarget "iosApp" */ = {
+		F861D7FA207FA4100085E80D /* Build configuration list for PBXNativeTarget "KorouterApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F861D7FB207FA4100085E80D /* Debug */,
@@ -590,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F861D7FD207FA4100085E80D /* Build configuration list for PBXNativeTarget "iosAppTests" */ = {
+		F861D7FD207FA4100085E80D /* Build configuration list for PBXNativeTarget "KorouterAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F861D7FE207FA4100085E80D /* Debug */,
