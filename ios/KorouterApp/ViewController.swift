@@ -1,7 +1,21 @@
 import UIKit
 import korouter
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, Presenter {
+    func onSwapInChild(name: String?, child: Presenter?, args: [String : String]?) {
+        NSLog("swap in")
+    }
+
+    func onSwapOutChild(name: String?, child: Presenter?) {
+        NSLog("swap out")
+    }
+
+    lazy var router: KoRouter = KoRouter.Companion().invoke { builder in
+        builder.route(path: "/") { builder in
+            builder.name = "index"
+            builder.component = self
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 //        label.text = Proxy().proxyHello()
