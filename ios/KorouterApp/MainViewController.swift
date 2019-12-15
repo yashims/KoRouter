@@ -6,6 +6,8 @@ class MainViewController: UIViewController, Presenter {
 
     func onSwapInChild(name: String?, child: Presenter?, args: [String : String]?) {
         NSLog("swap in")
+        if (child == nil) { return }
+        self.changeContent(containerView: self.containerView, childVC: child as! UIViewController)
     }
 
     func onSwapOutChild(name: String?, child: Presenter?) {
@@ -13,25 +15,26 @@ class MainViewController: UIViewController, Presenter {
     }
 
     lazy var router: KoRouter = KoRouter.Companion().invoke {
-        $0.route(path: "/") {
+        $0.route(path: "") {
             $0.name = "index"
             $0.component = self as Presenter
+
+            $0.children {
+                $0.route(path: "/") {
+                    $0.name = "index"
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "TopViewController")
+                    $0.component = vc as! Presenter
+                }
+            }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let topVC = self.storyboard?.instantiateViewController(withIdentifier: "TopViewController") {
-            self.changeContent(containerView: self.containerView, childVC: topVC)
-        }
-//        let queue = DispatchQueue.global(qos: .userInitiated)
-//        let group = DispatchGroup()
-//        queue.async(group: group) {
-//            sleep(3)
-//        }
-//        group.notify(queue: DispatchQueue.main) {
-//            self.changeVC(newViewController: TopViewController())
+        router.push(location: "/")
+//        if let topVC = self.storyboard?.instantiateViewController(withIdentifier: "TopViewController") {
+//            self.changeContent(containerView: self.containerView, childVC: topVC)
 //        }
     }
 
