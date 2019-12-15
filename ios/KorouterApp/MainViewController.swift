@@ -22,6 +22,9 @@ class MainViewController: UIViewController, Presenter {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let topVC = self.storyboard?.instantiateViewController(withIdentifier: "TopViewController") {
+            self.changeContent(containerView: self.containerView, childVC: topVC)
+        }
 //        let queue = DispatchQueue.global(qos: .userInitiated)
 //        let group = DispatchGroup()
 //        queue.async(group: group) {
@@ -36,42 +39,11 @@ class MainViewController: UIViewController, Presenter {
         super.didReceiveMemoryWarning()
     }
 
-    func addSubview(subView:UIView, toView parentView:UIView) {
-        parentView.addSubview(subView)
-
-        var viewBindingsDict = [String: AnyObject]()
-        viewBindingsDict["subView"] = subView
-        parentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subView]|",
-            options: [], metrics: nil, views: viewBindingsDict))
-        parentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subView]|",
-            options: [], metrics: nil, views: viewBindingsDict))
-    }
-
-    func cycleFromViewController(oldViewController: UIViewController, toViewController newViewController: UIViewController) {
-        oldViewController.willMove(toParent: nil)
-        self.addChild(newViewController)
-        self.addSubview(subView: newViewController.view, toView:self.containerView!)
-        // TODO: Set the starting state of your constraints here
-        newViewController.view.layoutIfNeeded()
-
-        // TODO: Set the ending state of your constraints here
-
-        UIView.animate(withDuration: 0.5, animations: {
-            // only need to call layoutIfNeeded here
-            newViewController.view.layoutIfNeeded()
-        },
-                       completion: { finished in
-                        oldViewController.view.removeFromSuperview()
-                        oldViewController.removeFromParent()
-                        newViewController.didMove(toParent: self)
-        })
-    }
-
     func changeVC(newViewController: UIViewController) {
         let oldVC = self.children.first
         oldVC?.willMove(toParent: nil)
         self.addChild(newViewController)
-        self.addSubview(subView: newViewController.view, toView:self.containerView!)
+        self.addSubView(subView: newViewController.view, toView:self.containerView!)
         // TODO: Set the starting state of your constraints here
         newViewController.view.layoutIfNeeded()
 
@@ -86,5 +58,26 @@ class MainViewController: UIViewController, Presenter {
                 oldVC?.removeFromParent()
                 newViewController.didMove(toParent: self)
         })
+    }
+
+    func changeContent(containerView container: UIView, childVC vc: UIViewController) {
+        let oldVCs = self.children
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        self.addChild(vc)
+        self.addSubView(subView: vc.view, toView: container)
+
+        oldVCs.forEach {
+            $0.view.removeFromSuperview()
+            $0.removeFromParent()
+        }
+        vc.didMove(toParent: self)
+    }
+
+    func addSubView(subView: UIView, toView parentView:UIView) {
+        parentView.addSubview(subView)
+        var dict: [String: AnyObject] = [String: AnyObject]()
+        dict["subView"] = subView
+        parentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subView]|", options: [], metrics: nil, views: dict))
+        parentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subView]|", options: [], metrics: nil, views: dict))
     }
 }
