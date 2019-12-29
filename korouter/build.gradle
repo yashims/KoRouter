@@ -87,7 +87,7 @@ kotlin {
          */
         commonMain {
             dependencies {
-//                implementation project(':util')
+                implementation project(':util')
                 implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
                 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutines_version"
             }

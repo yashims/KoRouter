@@ -32,7 +32,9 @@ class MainViewController: UIViewController, Presenter {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NSLog("viewDidLoad: \(router)")
         router.push(location: "/")
+        NSLog("pushed")
 //        if let topVC = self.storyboard?.instantiateViewController(withIdentifier: "TopViewController") {
 //            self.changeContent(containerView: self.containerView, childVC: topVC)
 //        }

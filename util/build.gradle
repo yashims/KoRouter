@@ -45,26 +45,24 @@ dependencies {
 }
 
 kotlin {
-    targets {
-//        // TODO: iOSやるときまでお休み
-//        final def iOSTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos") ? presets.iosArm64 : presets.iosX64
-//
-//        fromPreset(iOSTarget, 'iOS') {
-//            compilations.main.outputKinds('FRAMEWORK')
-//            // TODO: iOS Bitcodeを有効にする -> Kotlin v1.3.20 で自動でONになってるはず
-//            compilations.main.extraOpts '-Xembed-bitcode' or '-Xembed-bitcode-marker'
-//        }
+    android()
 
-//        // com.android.libraryをimportしてないとpresets.android出現しない
-//        fromPreset(presets.jvm, 'android')
-        fromPreset(presets.android, 'android')
+    iosArm64('ios') {
+        binaries {
+            framework()
+        }
+    }
+
+    iosX64() {
+        binaries {
+            framework()
+        }
     }
 
     sourceSets {
 
         /**
-         * @note 依存は以下を参照
-         * @see https://github.com/pljp/kotlinx.coroutines/blob/japanese_translation/README.md#gradle
+         * @note 依存は以下を参照* @see https://github.com/pljp/kotlinx.coroutines/blob/japanese_translation/README.md#gradle
          */
         commonMain {
             dependencies {
@@ -80,12 +78,14 @@ kotlin {
             }
         }
 
-//        iOSMain {
-//            dependencies {
-//                implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
-//                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines_version"
-//            }
-//        }
+        iosMain {
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines_version"
+            }
+        }
+
+        iosX64Main.dependsOn(iosMain)
 
         commonTest {
             dependencies {
@@ -102,24 +102,19 @@ configurations {
     compileClasspath
 }
 
-//// TODO: iOSやるときまでお休み
-// SEE: https://github.com/JetBrains/kotlin-mpp-example/blob/master/greeting/build.gradle
-//task packForXCode(type: Sync) {
-//    final File frameworkDir = new File(buildDir, "xcode-frameworks")
-//    final String mode = project.findProperty("XCODE_CONFIGRATION")?.toUpperCase() ?: 'DEBUG'
-//
-//    inputs.property "mode", mode
-//    dependsOn kotlin.targets.iOS.compilations.main.linkTaskName("FRAMEWORK", mode)
-//
-//    from { kotlin.targets.iOS.compilations.main.getBinary("FRAMEWORK", mode).parentFile }
-//    into frameworkDir
-//
-//    doLast {
-//        new File(frameworkDir, 'gradlew').with {
-//            text = "#!/bin/bash\nexport 'JAVA_HOME=${System.getProperty("java.home")}'\ncd '${rootProject.rootDir}'\n./gradlew \$@\n"
-//            setExecutable(true)
-//        }
-//    }
-//}
-//
-//tasks.build.dependsOn packForXCode
+task copyFramework {
+    def buildType = project.findProperty('kotlin.build.type') ?: 'DEBUG'
+    def target = project.findProperty('kotlin.target') ?: 'ios'
+    dependsOn kotlin.targets."$target".binaries.getFramework(buildType).linkTask
+
+    doLast {
+        def srcFile = kotlin.targets."$target".binaries.getFramework(buildType).outputFile
+        def targetDir = getProperty('configuration.build.dir')
+        copy {
+            from srcFile.parent
+            into targetDir
+            include 'util.framework/**'
+            include 'util.framework.dSYM'
+        }
+    }
+}

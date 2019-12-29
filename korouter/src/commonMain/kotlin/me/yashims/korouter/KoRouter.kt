@@ -1,7 +1,13 @@
 package me.yashims.korouter
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.yashims.korouter.matcher.RouterMatchResult
+import me.yashims.util.Log
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.math.min
 
 class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatchers.Default) {
@@ -9,16 +15,19 @@ class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatche
     private val matcher: Matcher = Matcher(routes)
     private val history: History = History()
     var currentRoute: Route = matcher.root()
-        private set(value) {
-            field = value
-        }
+        private set
 
-    fun push(location: String) = launch {
-        history.push(location)
-        val prevRoute = currentRoute
-        val matches: RouterMatchResult = matcher.match(location)
-        currentRoute = matches.route
-        differDispatch(prevRoute, currentRoute, matches.param)
+    fun push(location: String) {
+        Log.d("push")
+        korouterRunBlocking(Dispatchers.Main) {
+//        CoroutineScope(Dispatchers.Main).launch {
+            Log.d("launched")
+            history.push(location)
+            val prevRoute = currentRoute
+            val matches: RouterMatchResult = matcher.match(location)
+            currentRoute = matches.route
+            differDispatch(prevRoute, currentRoute, matches.param)
+        }
     }
 
     fun replace(location: String) = launch {
@@ -92,6 +101,8 @@ class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatche
             val builder = ChildrenBuilder(cb)
             return KoRouter(builder.build())
         }
+
+        fun chant() {}
     }
 
     class ChildrenBuilder {
@@ -137,3 +148,5 @@ class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatche
         }
     }
 }
+
+expect fun <T> korouterRunBlocking(context: CoroutineContext = EmptyCoroutineContext, block: suspend CoroutineScope.() -> T): T
