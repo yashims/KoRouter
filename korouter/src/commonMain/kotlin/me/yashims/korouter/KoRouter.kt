@@ -1,16 +1,10 @@
 package me.yashims.korouter
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import me.yashims.korouter.matcher.RouterMatchResult
 import me.yashims.util.Log
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.math.min
 
-class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatchers.Default) {
+class KoRouter(routes: List<Route>) {
 
     private val matcher: Matcher = Matcher(routes)
     private val history: History = History()
@@ -19,18 +13,14 @@ class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatche
 
     fun push(location: String) {
         Log.d("push")
-        korouterRunBlocking(Dispatchers.Main) {
-//        CoroutineScope(Dispatchers.Main).launch {
-            Log.d("launched")
-            history.push(location)
-            val prevRoute = currentRoute
-            val matches: RouterMatchResult = matcher.match(location)
-            currentRoute = matches.route
-            differDispatch(prevRoute, currentRoute, matches.param)
-        }
+        history.push(location)
+        val prevRoute = currentRoute
+        val matches: RouterMatchResult = matcher.match(location)
+        currentRoute = matches.route
+        differDispatch(prevRoute, currentRoute, matches.param)
     }
 
-    fun replace(location: String) = launch {
+    fun replace(location: String) {
         history.replace(location)
         val prevRoute = currentRoute
         val matches: RouterMatchResult = matcher.match(location)
@@ -38,7 +28,7 @@ class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatche
         differDispatch(prevRoute, currentRoute, matches.param)
     }
 
-    fun back() = launch {
+    fun back() {
         val location = history.back()
         val prevRoute = currentRoute
         val matches: RouterMatchResult = matcher.match(location)
@@ -46,7 +36,7 @@ class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatche
         differDispatch(prevRoute, currentRoute, matches.param)
     }
 
-    fun forward() = launch {
+    fun forward() {
         val location = history.forward()
         val prevRoute = currentRoute
         val matches: RouterMatchResult = matcher.match(location)
@@ -58,7 +48,7 @@ class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatche
         matcher.addChildren(parentLocation, children)
     }
 
-    private suspend fun differDispatch(prev: Route, next: Route, params: Map<String, String>?) {
+    private fun differDispatch(prev: Route, next: Route, params: Map<String, String>?) {
         val prevList = prev.fullNodes()
         val nextList = next.fullNodes()
         val minSynonymPathIndex = min(prevList.lastIndex, nextList.lastIndex)
@@ -72,10 +62,8 @@ class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatche
             if (this.size > 1) {
                 // Swap-out call ordered by child to parent.
                 this.windowed(2, 1, partialWindows = true).reversed().forEach { pair ->
-                    withContext(Dispatchers.Main) {
-                        val child: Route? = pair.getOrNull(1)
-                        pair[0].component.onSwapOutChild(child?.name, child?.component)
-                    }
+                    val child: Route? = pair.getOrNull(1)
+                    pair[0].component.onSwapOutChild(child?.name, child?.component)
                 }
             }
         }
@@ -84,24 +72,19 @@ class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatche
             if (this.size > 1) {
                 // Swap-in call ordered by parent to child.
                 this.windowed(2, 1, partialWindows = true).forEach { pair ->
-                    withContext(Dispatchers.Main) {
-                        val parent: Route = pair[0]
-                        val child: Route? = pair.getOrNull(1)
+                    val parent: Route = pair[0]
+                    val child: Route? = pair.getOrNull(1)
 
-                        // Case of node is internal node in subtree
-                        parent.component.onSwapInChild(child?.name, child?.component, params)
-                    }
+                    // Case of node is internal node in subtree
+                    parent.component.onSwapInChild(child?.name, child?.component, params)
                 }
             }
         }
     }
 
-    companion object {
-        operator fun invoke(cb: ChildrenBuilder.() -> Unit): KoRouter {
-            val builder = ChildrenBuilder(cb)
-            return KoRouter(builder.build())
-        }
+    constructor(block: ChildrenBuilder.() -> Unit) : this(ChildrenBuilder(block).build())
 
+    companion object {
         fun chant() {}
     }
 
@@ -149,4 +132,3 @@ class KoRouter(routes: List<Route>) : CoroutineScope by CoroutineScope(Dispatche
     }
 }
 
-expect fun <T> korouterRunBlocking(context: CoroutineContext = EmptyCoroutineContext, block: suspend CoroutineScope.() -> T): T

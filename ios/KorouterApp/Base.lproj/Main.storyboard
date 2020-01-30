@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,6 +58,9 @@
                                 <rect key="frame" x="154" y="318.5" width="67" height="30"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Show List"/>
+                                <connections>
+                                    <action selector="onClickShowList:" destination="j3S-zJ-UI8" eventType="touchUpInside" id="qbD-2N-gxC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -71,6 +74,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbe-Zg-2D3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="898" y="118"/>
+        </scene>
+        <!--Item List View Controller-->
+        <scene sceneID="16y-AH-ASj">
+            <objects>
+                <viewController storyboardIdentifier="ItemListViewController" id="U4q-pu-eBf" customClass="ItemListViewController" customModule="KorouterApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ona-mE-SvF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V8c-Rg-6ew">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="V8c-Rg-6ew" firstAttribute="leading" secondItem="bzW-DH-xiU" secondAttribute="leading" id="9XL-Mh-s1C"/>
+                            <constraint firstItem="bzW-DH-xiU" firstAttribute="trailing" secondItem="V8c-Rg-6ew" secondAttribute="trailing" id="FOq-l1-lm2"/>
+                            <constraint firstItem="V8c-Rg-6ew" firstAttribute="top" secondItem="bzW-DH-xiU" secondAttribute="top" id="FfS-cu-0po"/>
+                            <constraint firstItem="bzW-DH-xiU" firstAttribute="bottom" secondItem="V8c-Rg-6ew" secondAttribute="bottom" id="uGS-oa-mKB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bzW-DH-xiU"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="V8c-Rg-6ew" id="23N-BL-usn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WxK-wS-b1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="907" y="813"/>
         </scene>
     </scenes>
 </document>
