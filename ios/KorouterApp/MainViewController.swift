@@ -9,7 +9,7 @@ class MainViewController: UIViewController {
 
         let router: KoRouter = KoRouter {
             $0.route(path: "") {
-                $0.name = "index"
+                $0.name = "root"
                 $0.component = self as Presenter
 
                 $0.children {
