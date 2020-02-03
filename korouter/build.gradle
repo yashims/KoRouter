@@ -86,11 +86,6 @@ kotlin {
     }
 
     sourceSets {
-
-        /**
-         * @note 依存は以下を参照
-         * @see https://github.com/pljp/kotlinx.coroutines/blob/japanese_translation/README.md#gradle
-         */
         commonMain {
             dependencies {
                 implementation project(':util')
@@ -105,13 +100,6 @@ kotlin {
                 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
             }
         }
-
-//        jvmMain {
-//            dependencies {
-//                implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-//                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
-//            }
-//        }
 
         iosMain {
             dependencies {

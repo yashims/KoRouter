@@ -52,12 +52,12 @@ extension ItemListViewController: Presenter {
 extension ItemListViewController: UITableViewDelegate { }
 
 extension ItemListViewController: UITableViewDataSource {
-    /// TableのRow数
+    /// num of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
 
-    /// RowのCellを作る
+    /// make table row cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let item = items[indexPath.row]
@@ -65,7 +65,7 @@ extension ItemListViewController: UITableViewDataSource {
         return cell
     }
 
-    /// Rowがクリックされたときの動作
+    /// on click row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = items[indexPath.row]
         NSLog("item selected: \(item.name)")
