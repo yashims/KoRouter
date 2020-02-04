@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
-    id 'kotlin-multiplatform'
+//    id 'kotlin-multiplatform'
+    id 'org.jetbrains.kotlin.multiplatform'
+    id 'org.jetbrains.kotlin.native.cocoapods'
     id 'com.jfrog.bintray'
 }
 
@@ -51,7 +53,17 @@ dependencies {
 
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
+version = "1.0"
+
 kotlin {
+    cocoapods {
+        // Configure fields required by CocoaPods.
+        summary = "One of presentation layer routing module made by Kotlin/Native."
+        homepage = "https://github.com/yashims/KoRouter"
+        license = "MIT"
+        authors = "yashims85@gmail.com"
+    }
+
     android()
     android {
         // releaseとdebugのaarを作る
@@ -60,13 +72,13 @@ kotlin {
 
     iosArm64('ios') {
         binaries {
-            framework()
+//            framework()
         }
     }
 
     iosX64() {
         binaries {
-            framework()
+//            framework()
         }
     }
 
