@@ -7,148 +7,129 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		9ADC8D54C2E546B874E051D3E18782E4 /* korouter */ = {
+		C692BB15ABBDAB4BE32E9964ED515AAD /* KoRouter */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 3A11E7F63C22E4FC75A34204713B62FE /* Build configuration list for PBXAggregateTarget "korouter" */;
+			buildConfigurationList = 1C96237895625D4722CB62CE95076397 /* Build configuration list for PBXAggregateTarget "KoRouter" */;
 			buildPhases = (
-				B72BF653BD0619C39EF0E886EAFC3F58 /* [CP-User] Build korouter */,
+				D8ADF396BB50225AAD3E4B41621E0C39 /* [CP-User] Build KoRouter */,
 			);
 			dependencies = (
 			);
-			name = korouter;
+			name = KoRouter;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		40A13520BF668FB3F4CA25F506021D41 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		42C7AB5D7B712B397D1F82CB1124F8E1 /* Pods-KorouterApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA3B6A6FB5C6887B56FF31A2FBAA25C /* Pods-KorouterApp-dummy.m */; };
-		48AD12B4EFFE41134F8154376A82FA41 /* Pods-korouter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C7BF9AB2B0180DA4CF24D0B53CEA1459 /* Pods-korouter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		931680C5CD2F9DF73647A9279DD982F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		DBB5FDC8373FBD8FC4E9397F1211B883 /* Pods-korouter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E069C6EF0493EBA8DC011704F9173247 /* Pods-korouter-dummy.m */; };
-		F0A4D50972062879A5CFB9C5E261E4F6 /* Pods-KorouterApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 61CE8A390F986AEACE00F3B6E65D681B /* Pods-KorouterApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		14AB1B599A0F1FB987F3195A6F8FD1A2 /* Pods-KorouterApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B5AFBD77D32C1416DBCCEB27EA9BFD6A /* Pods-KorouterApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		26E1A019400C03520CEEA0688B9DAE8B /* Pods-KorouterApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BD921D3E87DDA60309CBDFE6D915E062 /* Pods-KorouterApp-dummy.m */; };
+		A9B469B96EB6A5A7AFE40F8172D238BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D092F3976E5E9AE305E34B72E6A829F9 /* PBXContainerItemProxy */ = {
+		3319A26539C8620A6F60E045B8C78EEA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9ADC8D54C2E546B874E051D3E18782E4;
-			remoteInfo = korouter;
+			remoteGlobalIDString = C692BB15ABBDAB4BE32E9964ED515AAD;
+			remoteInfo = KoRouter;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03C4ACAB1C3E30C2CFA35978BB1B897B /* Pods-korouter-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-korouter-acknowledgements.plist"; sourceTree = "<group>"; };
-		078FD5B377E51081E3B47C983164D85F /* Pods-korouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-korouter.debug.xcconfig"; sourceTree = "<group>"; };
-		08E30D6A6C8B33CF360800794F37E531 /* Pods-KorouterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KorouterApp.release.xcconfig"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		4E1B835468356989AC0269B578BBFB5F /* Pods-korouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-korouter.release.xcconfig"; sourceTree = "<group>"; };
-		5F300E737966DBA8DA9068C8BA30220C /* Pods-korouter-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-korouter-acknowledgements.markdown"; sourceTree = "<group>"; };
-		61CE8A390F986AEACE00F3B6E65D681B /* Pods-KorouterApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KorouterApp-umbrella.h"; sourceTree = "<group>"; };
-		6AA3B6A6FB5C6887B56FF31A2FBAA25C /* Pods-KorouterApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KorouterApp-dummy.m"; sourceTree = "<group>"; };
-		77D71CF78085DD226AA455EC980A8C84 /* Pods_korouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_korouter.framework; path = "Pods-korouter.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C70210F4E08E7C2DD273380AF1EFFBD /* Pods-KorouterApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KorouterApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3DA4FC04E38CEBDE8ADB4A3FF55D40B1 /* Pods-KorouterApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KorouterApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3F6714AA84694C367D11172977E4FBC7 /* KoRouter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KoRouter.framework; path = build/cocoapods/framework/KoRouter.framework; sourceTree = "<group>"; };
+		47FF7FD32156A4909EBD1E233EDA4B6C /* Pods-KorouterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KorouterApp.release.xcconfig"; sourceTree = "<group>"; };
+		48AC602478679FD0C8FE2C3A5BF74597 /* Pods-KorouterApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KorouterApp-Info.plist"; sourceTree = "<group>"; };
+		7901228477429ED4F3C89574CC73DFF5 /* KoRouter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KoRouter.xcconfig; sourceTree = "<group>"; };
+		8439BB7C85DB1498250FDCB3041AA37C /* Pods-KorouterApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KorouterApp-acknowledgements.plist"; sourceTree = "<group>"; };
+		9BF37C823C83AE68B2427D20C664BA09 /* KoRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = KoRouter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0E512E93ABE6817BCC2726F7AE95A0E /* Pods-KorouterApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KorouterApp-acknowledgements.plist"; sourceTree = "<group>"; };
-		A18FD4D396A2EB5E7C402572E25DF1E6 /* korouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = korouter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		AF7A8F98B0446CDF96DC677537AEE52C /* korouter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = korouter.framework; path = build/cocoapods/framework/korouter.framework; sourceTree = "<group>"; };
-		B6D1278B3848FA092C770A397D52962D /* Pods-korouter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-korouter.modulemap"; sourceTree = "<group>"; };
-		C7BF9AB2B0180DA4CF24D0B53CEA1459 /* Pods-korouter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-korouter-umbrella.h"; sourceTree = "<group>"; };
-		C9544EEAB77322F42D9140E188785EF9 /* Pods-KorouterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KorouterApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B5AFBD77D32C1416DBCCEB27EA9BFD6A /* Pods-KorouterApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KorouterApp-umbrella.h"; sourceTree = "<group>"; };
+		BD921D3E87DDA60309CBDFE6D915E062 /* Pods-KorouterApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KorouterApp-dummy.m"; sourceTree = "<group>"; };
+		C49C086E0DB88D6D4C2A3F23BED2E156 /* Pods-KorouterApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-KorouterApp.modulemap"; sourceTree = "<group>"; };
+		C86ACCF0B42AC8E34BE31CE30412FA11 /* Pods-KorouterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KorouterApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CFD0ED53271C65C352B9EDFD977E73CB /* Pods_KorouterApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KorouterApp.framework; path = "Pods-KorouterApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D17A59D6976D9BCE0824C68FFE991A43 /* Pods-korouter-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-korouter-Info.plist"; sourceTree = "<group>"; };
-		E069C6EF0493EBA8DC011704F9173247 /* Pods-korouter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-korouter-dummy.m"; sourceTree = "<group>"; };
-		EE0FB176AAE808269E0AAA7D2B3DEA12 /* Pods-KorouterApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-KorouterApp.modulemap"; sourceTree = "<group>"; };
-		F1BC9DEE935DE77A4AEA5C877D6056BD /* Pods-KorouterApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KorouterApp-Info.plist"; sourceTree = "<group>"; };
-		FD139E94D14EA619CFAA0D403E616FA4 /* korouter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = korouter.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4D0F37D3F378E8C233C0289F8DDF93E9 /* Frameworks */ = {
+		D3656FDEFC003A290A32BF1EE5624A94 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40A13520BF668FB3F4CA25F506021D41 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CED8E0C6639EAB94FDEA76F8088F8F83 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				931680C5CD2F9DF73647A9279DD982F2 /* Foundation.framework in Frameworks */,
+				A9B469B96EB6A5A7AFE40F8172D238BF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1D0FDE1C75DDD98ED275EE785FEF061C /* Development Pods */ = {
+		067AE98B20755D5444A7F571E0E91404 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				F1E964D6C02EA8FEA942D9625CE82502 /* korouter */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		31CB9DA876B11A58A4C3A567C491E12C /* Pods-korouter */ = {
-			isa = PBXGroup;
-			children = (
-				B6D1278B3848FA092C770A397D52962D /* Pods-korouter.modulemap */,
-				5F300E737966DBA8DA9068C8BA30220C /* Pods-korouter-acknowledgements.markdown */,
-				03C4ACAB1C3E30C2CFA35978BB1B897B /* Pods-korouter-acknowledgements.plist */,
-				E069C6EF0493EBA8DC011704F9173247 /* Pods-korouter-dummy.m */,
-				D17A59D6976D9BCE0824C68FFE991A43 /* Pods-korouter-Info.plist */,
-				C7BF9AB2B0180DA4CF24D0B53CEA1459 /* Pods-korouter-umbrella.h */,
-				078FD5B377E51081E3B47C983164D85F /* Pods-korouter.debug.xcconfig */,
-				4E1B835468356989AC0269B578BBFB5F /* Pods-korouter.release.xcconfig */,
-			);
-			name = "Pods-korouter";
-			path = "Target Support Files/Pods-korouter";
-			sourceTree = "<group>";
-		};
-		56C4DE71B5D07955BF33A582D9452D46 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				31CB9DA876B11A58A4C3A567C491E12C /* Pods-korouter */,
-				D6CDFAE80F3B600FF018966FBA7D4CE2 /* Pods-KorouterApp */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		A2ABD82C3C2E44DC4AB2B8FD0E6BF197 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AF7A8F98B0446CDF96DC677537AEE52C /* korouter.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A877084DFD87D031619234CCA33E5593 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				A18FD4D396A2EB5E7C402572E25DF1E6 /* korouter.podspec */,
+				9BF37C823C83AE68B2427D20C664BA09 /* KoRouter.podspec */,
 			);
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		AEE93AA9CB9D1EBFD731304A02CF91FE /* Products */ = {
+		1970E7FF60D8DD6911D2063C5058B9B7 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				77D71CF78085DD226AA455EC980A8C84 /* Pods_korouter.framework */,
+				53525E1CC4479D6899BC1EAA11C1A5BC /* Pods-KorouterApp */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		36E559442DCFEE20A17F74F2E3D7AE4F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7901228477429ED4F3C89574CC73DFF5 /* KoRouter.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../ios/Pods/Target Support Files/KoRouter";
+			sourceTree = "<group>";
+		};
+		53525E1CC4479D6899BC1EAA11C1A5BC /* Pods-KorouterApp */ = {
+			isa = PBXGroup;
+			children = (
+				C49C086E0DB88D6D4C2A3F23BED2E156 /* Pods-KorouterApp.modulemap */,
+				3DA4FC04E38CEBDE8ADB4A3FF55D40B1 /* Pods-KorouterApp-acknowledgements.markdown */,
+				8439BB7C85DB1498250FDCB3041AA37C /* Pods-KorouterApp-acknowledgements.plist */,
+				BD921D3E87DDA60309CBDFE6D915E062 /* Pods-KorouterApp-dummy.m */,
+				48AC602478679FD0C8FE2C3A5BF74597 /* Pods-KorouterApp-Info.plist */,
+				B5AFBD77D32C1416DBCCEB27EA9BFD6A /* Pods-KorouterApp-umbrella.h */,
+				C86ACCF0B42AC8E34BE31CE30412FA11 /* Pods-KorouterApp.debug.xcconfig */,
+				47FF7FD32156A4909EBD1E233EDA4B6C /* Pods-KorouterApp.release.xcconfig */,
+			);
+			name = "Pods-KorouterApp";
+			path = "Target Support Files/Pods-KorouterApp";
+			sourceTree = "<group>";
+		};
+		5B2580B3743A488552EAEDE40767A859 /* Products */ = {
+			isa = PBXGroup;
+			children = (
 				CFD0ED53271C65C352B9EDFD977E73CB /* Pods_KorouterApp.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AFA6B0530A2545FDC77451062F73E3A8 /* Support Files */ = {
+		69ABD92608D00FD959089B0D6234663B /* KoRouter */ = {
 			isa = PBXGroup;
 			children = (
-				FD139E94D14EA619CFAA0D403E616FA4 /* korouter.xcconfig */,
+				DAC0630121E32282829BCAB09B40BA3D /* Frameworks */,
+				067AE98B20755D5444A7F571E0E91404 /* Pod */,
+				36E559442DCFEE20A17F74F2E3D7AE4F /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../ios/Pods/Target Support Files/korouter";
+			name = KoRouter;
+			path = ../../KoRouter;
+			sourceTree = "<group>";
+		};
+		7D19310051C4CCC3FB8224ED889F02CA /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				69ABD92608D00FD959089B0D6234663B /* KoRouter */,
+			);
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -163,10 +144,10 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				1D0FDE1C75DDD98ED275EE785FEF061C /* Development Pods */,
+				7D19310051C4CCC3FB8224ED889F02CA /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				AEE93AA9CB9D1EBFD731304A02CF91FE /* Products */,
-				56C4DE71B5D07955BF33A582D9452D46 /* Targets Support Files */,
+				5B2580B3743A488552EAEDE40767A859 /* Products */,
+				1970E7FF60D8DD6911D2063C5058B9B7 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,49 +159,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D6CDFAE80F3B600FF018966FBA7D4CE2 /* Pods-KorouterApp */ = {
+		DAC0630121E32282829BCAB09B40BA3D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EE0FB176AAE808269E0AAA7D2B3DEA12 /* Pods-KorouterApp.modulemap */,
-				8C70210F4E08E7C2DD273380AF1EFFBD /* Pods-KorouterApp-acknowledgements.markdown */,
-				A0E512E93ABE6817BCC2726F7AE95A0E /* Pods-KorouterApp-acknowledgements.plist */,
-				6AA3B6A6FB5C6887B56FF31A2FBAA25C /* Pods-KorouterApp-dummy.m */,
-				F1BC9DEE935DE77A4AEA5C877D6056BD /* Pods-KorouterApp-Info.plist */,
-				61CE8A390F986AEACE00F3B6E65D681B /* Pods-KorouterApp-umbrella.h */,
-				C9544EEAB77322F42D9140E188785EF9 /* Pods-KorouterApp.debug.xcconfig */,
-				08E30D6A6C8B33CF360800794F37E531 /* Pods-KorouterApp.release.xcconfig */,
+				3F6714AA84694C367D11172977E4FBC7 /* KoRouter.framework */,
 			);
-			name = "Pods-KorouterApp";
-			path = "Target Support Files/Pods-KorouterApp";
-			sourceTree = "<group>";
-		};
-		F1E964D6C02EA8FEA942D9625CE82502 /* korouter */ = {
-			isa = PBXGroup;
-			children = (
-				A2ABD82C3C2E44DC4AB2B8FD0E6BF197 /* Frameworks */,
-				A877084DFD87D031619234CCA33E5593 /* Pod */,
-				AFA6B0530A2545FDC77451062F73E3A8 /* Support Files */,
-			);
-			name = korouter;
-			path = ../../korouter;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		79CEECA8BF8CC07A4B9D764E4B048EA9 /* Headers */ = {
+		EFFA92B60A74F4FE4628923703477276 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48AD12B4EFFE41134F8154376A82FA41 /* Pods-korouter-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B7CA4BE954CE4B2353EE00AD9305E375 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F0A4D50972062879A5CFB9C5E261E4F6 /* Pods-KorouterApp-umbrella.h in Headers */,
+				14AB1B599A0F1FB987F3195A6F8FD1A2 /* Pods-KorouterApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,39 +183,21 @@
 /* Begin PBXNativeTarget section */
 		612E3210EAF37AC7EDC71FE18E19507F /* Pods-KorouterApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E9D76D02889B81E8B84994DEBEE6AF1 /* Build configuration list for PBXNativeTarget "Pods-KorouterApp" */;
+			buildConfigurationList = 29F97699630FC142AEE5283EB2A2B16B /* Build configuration list for PBXNativeTarget "Pods-KorouterApp" */;
 			buildPhases = (
-				B7CA4BE954CE4B2353EE00AD9305E375 /* Headers */,
-				E7947D1A371F567E5005031B97F7FDE5 /* Sources */,
-				4D0F37D3F378E8C233C0289F8DDF93E9 /* Frameworks */,
-				A85C1AEE50348E977872239F2DFE75E8 /* Resources */,
+				EFFA92B60A74F4FE4628923703477276 /* Headers */,
+				035731F930E63479C91EEDC59179C3DC /* Sources */,
+				D3656FDEFC003A290A32BF1EE5624A94 /* Frameworks */,
+				2892507044241AD173265B32540BB75F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7417ACA18E98FCECF3E4DCFF14D8484A /* PBXTargetDependency */,
+				D3E45F31EF6487BCC81E3876BE93F04D /* PBXTargetDependency */,
 			);
 			name = "Pods-KorouterApp";
 			productName = "Pods-KorouterApp";
 			productReference = CFD0ED53271C65C352B9EDFD977E73CB /* Pods_KorouterApp.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		847748C486E75F1FDF999C689C54C420 /* Pods-korouter */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 002D5EC134D7BAA64EAEA77D2B331D1F /* Build configuration list for PBXNativeTarget "Pods-korouter" */;
-			buildPhases = (
-				79CEECA8BF8CC07A4B9D764E4B048EA9 /* Headers */,
-				FD2729B641748437DA8DA5C0E14245BE /* Sources */,
-				CED8E0C6639EAB94FDEA76F8088F8F83 /* Frameworks */,
-				9A84F76E9C28FE1DCD14D824D30EDB59 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-korouter";
-			productName = "Pods-korouter";
-			productReference = 77D71CF78085DD226AA455EC980A8C84 /* Pods_korouter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -282,26 +218,18 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = AEE93AA9CB9D1EBFD731304A02CF91FE /* Products */;
+			productRefGroup = 5B2580B3743A488552EAEDE40767A859 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9ADC8D54C2E546B874E051D3E18782E4 /* korouter */,
-				847748C486E75F1FDF999C689C54C420 /* Pods-korouter */,
+				C692BB15ABBDAB4BE32E9964ED515AAD /* KoRouter */,
 				612E3210EAF37AC7EDC71FE18E19507F /* Pods-KorouterApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9A84F76E9C28FE1DCD14D824D30EDB59 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A85C1AEE50348E977872239F2DFE75E8 /* Resources */ = {
+		2892507044241AD173265B32540BB75F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -311,43 +239,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B72BF653BD0619C39EF0E886EAFC3F58 /* [CP-User] Build korouter */ = {
+		D8ADF396BB50225AAD3E4B41621E0C39 /* [CP-User] Build KoRouter */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			name = "[CP-User] Build korouter";
+			name = "[CP-User] Build KoRouter";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "                set -ev\n                REPO_ROOT=\"$PODS_TARGET_SRCROOT\"\n                \"$REPO_ROOT/../gradlew\" -p \"$REPO_ROOT\" :korouter:syncFramework                     -Pkotlin.native.cocoapods.target=$KOTLIN_TARGET                     -Pkotlin.native.cocoapods.configuration=$CONFIGURATION                     -Pkotlin.native.cocoapods.cflags=\"$OTHER_CFLAGS\"                     -Pkotlin.native.cocoapods.paths.headers=\"$HEADER_SEARCH_PATHS\"                     -Pkotlin.native.cocoapods.paths.frameworks=\"$FRAMEWORK_SEARCH_PATHS\"\n";
+			shellScript = "                set -ev\n                REPO_ROOT=\"$PODS_TARGET_SRCROOT\"\n                \"$REPO_ROOT/../gradlew\" -p \"$REPO_ROOT\" :KoRouter:syncFramework                     -Pkotlin.native.cocoapods.target=$KOTLIN_TARGET                     -Pkotlin.native.cocoapods.configuration=$CONFIGURATION                     -Pkotlin.native.cocoapods.cflags=\"$OTHER_CFLAGS\"                     -Pkotlin.native.cocoapods.paths.headers=\"$HEADER_SEARCH_PATHS\"                     -Pkotlin.native.cocoapods.paths.frameworks=\"$FRAMEWORK_SEARCH_PATHS\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E7947D1A371F567E5005031B97F7FDE5 /* Sources */ = {
+		035731F930E63479C91EEDC59179C3DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42C7AB5D7B712B397D1F82CB1124F8E1 /* Pods-KorouterApp-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FD2729B641748437DA8DA5C0E14245BE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DBB5FDC8373FBD8FC4E9397F1211B883 /* Pods-korouter-dummy.m in Sources */,
+				26E1A019400C03520CEEA0688B9DAE8B /* Pods-KorouterApp-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7417ACA18E98FCECF3E4DCFF14D8484A /* PBXTargetDependency */ = {
+		D3E45F31EF6487BCC81E3876BE93F04D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = korouter;
-			target = 9ADC8D54C2E546B874E051D3E18782E4 /* korouter */;
-			targetProxy = D092F3976E5E9AE305E34B72E6A829F9 /* PBXContainerItemProxy */;
+			name = KoRouter;
+			target = C692BB15ABBDAB4BE32E9964ED515AAD /* KoRouter */;
+			targetProxy = 3319A26539C8620A6F60E045B8C78EEA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -412,9 +332,9 @@
 			};
 			name = Release;
 		};
-		9D8661AF24F1083EFB626EAC3DC51319 /* Release */ = {
+		4F7C3867D78E0BFC2F405F0724B28FD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08E30D6A6C8B33CF360800794F37E531 /* Pods-KorouterApp.release.xcconfig */;
+			baseConfigurationReference = C86ACCF0B42AC8E34BE31CE30412FA11 /* Pods-KorouterApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -445,15 +365,30 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		A590A24128491C5077CBDD6E35DE7696 /* Release */ = {
+		9F574AEA1671122F4214AB6C1C6B6F9F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E1B835468356989AC0269B578BBFB5F /* Pods-korouter.release.xcconfig */;
+			baseConfigurationReference = 7901228477429ED4F3C89574CC73DFF5 /* KoRouter.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A7F0DC5E3D4F1463CD12F642D72A188D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47FF7FD32156A4909EBD1E233EDA4B6C /* Pods-KorouterApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -466,7 +401,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-korouter/Pods-korouter-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-KorouterApp/Pods-KorouterApp-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -475,7 +410,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-korouter/Pods-korouter.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-KorouterApp/Pods-KorouterApp.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -554,63 +489,9 @@
 			};
 			name = Debug;
 		};
-		B7DD5DE004912CB498F14701E08DBD68 /* Debug */ = {
+		FF4490764D20A7AABB5850ED5DD646CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD139E94D14EA619CFAA0D403E616FA4 /* korouter.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B87A4DD03D6EA9E3BB51B983CA39D466 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9544EEAB77322F42D9140E188785EF9 /* Pods-KorouterApp.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-KorouterApp/Pods-KorouterApp-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-KorouterApp/Pods-KorouterApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E46EF2E4F47C9B50E2BF65C2261BB17B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD139E94D14EA619CFAA0D403E616FA4 /* korouter.xcconfig */;
+			baseConfigurationReference = 7901228477429ED4F3C89574CC73DFF5 /* KoRouter.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -625,70 +506,23 @@
 			};
 			name = Release;
 		};
-		E8809C6599FF016B25A4C5A23209B352 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 078FD5B377E51081E3B47C983164D85F /* Pods-korouter.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-korouter/Pods-korouter-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-korouter/Pods-korouter.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		002D5EC134D7BAA64EAEA77D2B331D1F /* Build configuration list for PBXNativeTarget "Pods-korouter" */ = {
+		1C96237895625D4722CB62CE95076397 /* Build configuration list for PBXAggregateTarget "KoRouter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E8809C6599FF016B25A4C5A23209B352 /* Debug */,
-				A590A24128491C5077CBDD6E35DE7696 /* Release */,
+				9F574AEA1671122F4214AB6C1C6B6F9F /* Debug */,
+				FF4490764D20A7AABB5850ED5DD646CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A11E7F63C22E4FC75A34204713B62FE /* Build configuration list for PBXAggregateTarget "korouter" */ = {
+		29F97699630FC142AEE5283EB2A2B16B /* Build configuration list for PBXNativeTarget "Pods-KorouterApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B7DD5DE004912CB498F14701E08DBD68 /* Debug */,
-				E46EF2E4F47C9B50E2BF65C2261BB17B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3E9D76D02889B81E8B84994DEBEE6AF1 /* Build configuration list for PBXNativeTarget "Pods-KorouterApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B87A4DD03D6EA9E3BB51B983CA39D466 /* Debug */,
-				9D8661AF24F1083EFB626EAC3DC51319 /* Release */,
+				4F7C3867D78E0BFC2F405F0724B28FD7 /* Debug */,
+				A7F0DC5E3D4F1463CD12F642D72A188D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

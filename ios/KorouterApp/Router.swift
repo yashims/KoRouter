@@ -1,5 +1,5 @@
 import Foundation
-import korouter
+import KoRouter
 
 class Router {
     private (set) static var router: KoRouter? = nil

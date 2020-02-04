@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'korouter'
+    spec.name                     = 'KoRouter'
     spec.version                  = '1.0'
     spec.homepage                 = 'https://github.com/yashims/KoRouter'
     spec.source                   = { :git => "Not Published", :tag => "Cocoapods/#{spec.name}/#{spec.version}" }
@@ -26,13 +26,13 @@ Pod::Spec.new do |spec|
 
     spec.script_phases = [
         {
-            :name => 'Build korouter',
+            :name => 'Build KoRouter',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT
                 set -ev
                 REPO_ROOT="$PODS_TARGET_SRCROOT"
-                "$REPO_ROOT/../gradlew" -p "$REPO_ROOT" :korouter:syncFramework \
+                "$REPO_ROOT/../gradlew" -p "$REPO_ROOT" :KoRouter:syncFramework \
                     -Pkotlin.native.cocoapods.target=$KOTLIN_TARGET \
                     -Pkotlin.native.cocoapods.configuration=$CONFIGURATION \
                     -Pkotlin.native.cocoapods.cflags="$OTHER_CFLAGS" \

@@ -1,16 +1,16 @@
 PODS:
-  - korouter (1.0)
+  - KoRouter (1.0)
 
 DEPENDENCIES:
-  - korouter (from `../korouter`)
+  - KoRouter (from `../KoRouter`)
 
 EXTERNAL SOURCES:
-  korouter:
-    :path: "../korouter"
+  KoRouter:
+    :path: "../KoRouter"
 
 SPEC CHECKSUMS:
-  korouter: dede7b2e44dd8fd80269743db6ceca169efc7f1e
+  KoRouter: b8f1eed74804851bf00515a2860de3161072ca52
 
-PODFILE CHECKSUM: c0afcea21a4dce3a20f6e665af35bced5f2b278d
+PODFILE CHECKSUM: 85edef9f57736841ba541e3ac5a46bc6cd4e6a9c
 
 COCOAPODS: 1.8.4

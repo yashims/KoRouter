@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9ADC8D54C2E546B874E051D3E18782E4"
-               BuildableName = "korouter"
-               BlueprintName = "korouter"
+               BlueprintIdentifier = "C692BB15ABBDAB4BE32E9964ED515AAD"
+               BuildableName = "KoRouter"
+               BlueprintName = "KoRouter"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
