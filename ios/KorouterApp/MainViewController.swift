@@ -1,5 +1,5 @@
 import UIKit
-import korouter
+import KoRouter
 
 class MainViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!

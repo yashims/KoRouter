@@ -11,4 +11,4 @@ rootProject.name = 'kotlin-router'
 
 enableFeaturePreview('GRADLE_METADATA')
 
-include ':android', ':korouter', ':util'
+include ':android', ':KoRouter', ':util'

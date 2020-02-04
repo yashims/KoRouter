@@ -1,5 +1,5 @@
 import UIKit
-import korouter
+import KoRouter
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
