@@ -1,0 +1,16 @@
+PODS:
+  - korouter (1.0)
+
+DEPENDENCIES:
+  - korouter (from `../korouter`)
+
+EXTERNAL SOURCES:
+  korouter:
+    :path: "../korouter"
+
+SPEC CHECKSUMS:
+  korouter: dede7b2e44dd8fd80269743db6ceca169efc7f1e
+
+PODFILE CHECKSUM: c0afcea21a4dce3a20f6e665af35bced5f2b278d
+
+COCOAPODS: 1.8.4

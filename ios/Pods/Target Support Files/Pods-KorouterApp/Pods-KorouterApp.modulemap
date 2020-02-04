@@ -1,0 +1,6 @@
+framework module Pods_KorouterApp {
+  umbrella header "Pods-KorouterApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
