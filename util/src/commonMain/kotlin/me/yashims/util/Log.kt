@@ -1,7 +1,7 @@
 package me.yashims.util
 
 internal enum class LogLevel {
-    DEBUG, WARN, ERROR
+    DEBUG, WARN, INFO, ERROR
 }
 
 internal expect fun logWrite(msg: String, logLevel: LogLevel)

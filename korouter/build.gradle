@@ -49,26 +49,46 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-kotlin {
-    targets {
-//        fromPreset(presets.iosX64, 'ios') {
-//            compilations.main.outputKinds('FRAMEWORK')
-//        }
+import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
-        // com.android.libraryをimportしてないとpresets.android出現しない
-        fromPreset(presets.android, 'android')
-        fromPreset(presets.jvm, 'jvm')
+kotlin {
+    android()
+    android {
+        // releaseとdebugのaarを作る
+        publishLibraryVariants("release", "debug")
+    }
+
+    iosArm64('ios') {
+        binaries {
+            framework()
+        }
+    }
+
+    iosX64() {
+        binaries {
+            framework()
+        }
+    }
+
+    // Create a task building a fat framework.
+    task debugFatFramework(type: FatFrameworkTask) {
+        // The fat framework must have the same base name as the initial frameworks.
+        baseName = "korouter"
+
+        // The default destination directory is '<build directory>/fat-framework'.
+        destinationDir = file("$buildDir/fat-framework/debug")
+
+        // Specify the frameworks to be merged.
+        from(
+                targets.ios.binaries.getFramework("DEBUG"),
+                targets.iosX64.binaries.getFramework("DEBUG")
+        )
     }
 
     sourceSets {
-
-        /**
-         * @note 依存は以下を参照
-         * @see https://github.com/pljp/kotlinx.coroutines/blob/japanese_translation/README.md#gradle
-         */
         commonMain {
             dependencies {
-//                implementation project(':util')
+                implementation project(':util')
                 implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
                 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutines_version"
             }
@@ -81,34 +101,19 @@ kotlin {
             }
         }
 
-        jvmMain {
+        iosMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+                implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines_version"
             }
         }
 
-//        iosMain {
-//            dependencies {
-//                implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
-//                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines_version"
-//            }
-//        }
+        iosX64Main.dependsOn(iosMain)
 
         commonTest {
             dependencies {
                 implementation 'org.jetbrains.kotlin:kotlin-test-common'
                 implementation 'org.jetbrains.kotlin:kotlin-test-annotations-common'
-            }
-        }
-        jvmTest {
-            dependencies {
-                implementation 'junit:junit:4.12'
-                implementation 'org.jetbrains.kotlin:kotlin-test-common'
-                implementation 'org.jetbrains.kotlin:kotlin-test-annotations-common'
-//                implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.0-M1'
-//                implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test'
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
             }
         }
     }
@@ -119,54 +124,34 @@ configurations {
     compileClasspath
 }
 
-// SEE: https://github.com/JetBrains/kotlin-mpp-example/blob/master/greeting/build.gradle
-/*
-task packForXCode(type: Sync) {
-    final File frameworkDir = new File(buildDir, "xcode-frameworks")
-    final String mode = project.findProperty("XCODE_CONFIGRATION")?.toUpperCase() ?: 'DEBUG'
-
-    inputs.property "mode", mode
-    dependsOn kotlin.targets.iOS.compilations.main.linkTaskName("FRAMEWORK", mode)
-
-    from { kotlin.targets.iOS.compilations.main.getBinary("FRAMEWORK", mode).parentFile }
-    into frameworkDir
-
-    doLast {
-        new File(frameworkDir, 'gradlew').with {
-            text = "#!/bin/bash\nexport 'JAVA_HOME=${System.getProperty("java.home")}'\ncd '${rootProject.rootDir}'\n./gradlew \$@\n"
-            setExecutable(true)
-        }
-    }
-}
-
-tasks.build.dependsOn packForXCode
-*/
-
 // This task attaches native framework built from ios module to Xcode project
 // (see iosApp directory). Don't run this task directly,
 // Xcode runs this task itself during its build process.
 // Before opening the project from iosApp directory in Xcode,
 // make sure all Gradle infrastructure exists (gradle.wrapper, gradlew).
 task copyFramework {
-    def buildType = project.findProperty("kotlin.build.type") ?: "DEBUG"
-    def target = project.findProperty("kotlin.target") ?: "ios"
-    dependsOn "link${buildType.toLowerCase().capitalize()}Framework${target.capitalize()}"
+    def buildType = project.findProperty('kotlin.build.type') ?: 'DEBUG'
+    def target = project.findProperty('kotlin.target') ?: 'ios'
+    dependsOn debugFatFramework
 
     doLast {
-        def srcFile = kotlin.targets."$target".compilations.main.getBinary("FRAMEWORK", buildType)
-        def targetDir = getProperty("configuration.build.dir")
+        def srcDir = debugFatFramework.destinationDir.toString()
+        def targetDir = getProperty('configuration.build.dir')
         copy {
-            from srcFile.parent
+            from srcDir
             into targetDir
-            include 'app.framework/**'
-            include 'app.framework.dSYM'
+            include 'korouter.framework/**'
+            include 'korouter.framework.dSYM'
         }
     }
 }
 
+/**
+ * Jcenter deployment
+ */
 def libraryId = 'korouter'
-def siteUrl = 'https://github.com/yashims/kotlin-router'
-def githubUrl = 'https://github.com/yashims/kotlin-router'
+def siteUrl = 'https://github.com/yashims/KoRouter'
+def githubUrl = 'https://github.com/yashims/KoRouter'
 bintray {
 
     user = project.hasProperty('bintray_user') ? bintray_user : ''
