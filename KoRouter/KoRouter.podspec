@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'KoRouter'
-    spec.version                  = '1.0'
+    spec.version                  = '0.0.1'
     spec.homepage                 = 'https://github.com/yashims/KoRouter'
     spec.source                   = { :git => "Not Published", :tag => "Cocoapods/#{spec.name}/#{spec.version}" }
     spec.authors                  = 'yashims85@gmail.com'

@@ -6,8 +6,8 @@ plugins {
     id 'com.jfrog.bintray'
 }
 
-group "me.yashims"
-version "0.0.1"
+group = "dev.yashims"
+version = "0.0.1"
 archivesBaseName = 'korouter'
 
 
@@ -52,8 +52,6 @@ dependencies {
 }
 
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
-
-version = "1.0"
 
 kotlin {
     cocoapods {
