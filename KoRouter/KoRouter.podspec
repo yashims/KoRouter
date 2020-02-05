@@ -8,10 +8,12 @@ Pod::Spec.new do |spec|
     spec.summary                  = 'One of presentation layer routing module made by Kotlin/Native.'
 
     spec.static_framework         = true
-    spec.vendored_frameworks      = "build/cocoapods/framework/#{spec.name}.framework"
+    spec.ios.vendored_frameworks      = "distribution/#{spec.name}.framework"
     spec.libraries                = "c++"
     spec.module_name              = "#{spec.name}_umbrella"
 
+    spec.platform = :ios
+    spec.ios.deployment_target = '10.0'
             
 
     spec.pod_target_xcconfig = {
