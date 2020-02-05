@@ -11,7 +11,8 @@ Pod::Spec.new do |spec|
 
     spec.static_framework         = true
 #     spec.ios.vendored_frameworks  = "KoRouter/distribution/#{spec.name}.framework"
-    spec.ios.preserve_paths = "#{spec.name}.framework"
+    spec.preserve_paths = "*.framework"
+#     spec.preserve_path = "#{spec.name}.framework"
     spec.libraries                = "c++"
 
     spec.requires_arc = true
