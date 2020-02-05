@@ -16,8 +16,8 @@
 		F861D7E6207FA40F0085E80D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F861D7E4207FA40F0085E80D /* Main.storyboard */; };
 		F861D7EB207FA4100085E80D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F861D7E9207FA4100085E80D /* LaunchScreen.storyboard */; };
 		F861D7F6207FA4100085E80D /* iosAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F861D7F5207FA4100085E80D /* iosAppTests.swift */; };
-		F861D80C207FA4200085E80D /* korouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F861D805207FA4200085E80D /* korouter.framework */; };
-		F861D80D207FA4200085E80D /* korouter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F861D805207FA4200085E80D /* korouter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F861D80C207FA4200085E80D /* KoRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F861D805207FA4200085E80D /* KoRouter.framework */; };
+		F861D80D207FA4200085E80D /* KoRouter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F861D805207FA4200085E80D /* KoRouter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F861D80D207FA4200085E80D /* korouter.framework in Embed Frameworks */,
+				F861D80D207FA4200085E80D /* KoRouter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,7 +65,7 @@
 		F861D7F1207FA4100085E80D /* KorouterAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KorouterAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F861D7F5207FA4100085E80D /* iosAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosAppTests.swift; sourceTree = "<group>"; };
 		F861D7F7207FA4100085E80D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F861D805207FA4200085E80D /* korouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = korouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F861D805207FA4200085E80D /* KoRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KoRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F861D80C207FA4200085E80D /* korouter.framework in Frameworks */,
+				F861D80C207FA4200085E80D /* KoRouter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +119,7 @@
 			children = (
 				F861D7DD207FA40F0085E80D /* KorouterApp.app */,
 				F861D7F1207FA4100085E80D /* KorouterAppTests.xctest */,
-				F861D805207FA4200085E80D /* korouter.framework */,
+				F861D805207FA4200085E80D /* KoRouter.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,9 +187,9 @@
 			productReference = F861D7F1207FA4100085E80D /* KorouterAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F861D804207FA4200085E80D /* korouter */ = {
+		F861D804207FA4200085E80D /* KoRouter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F861D80E207FA4200085E80D /* Build configuration list for PBXNativeTarget "korouter" */;
+			buildConfigurationList = F861D80E207FA4200085E80D /* Build configuration list for PBXNativeTarget "KoRouter" */;
 			buildPhases = (
 				F861D812207FA4320085E80D /* ShellScript */,
 			);
@@ -197,9 +197,9 @@
 			);
 			dependencies = (
 			);
-			name = korouter;
+			name = KoRouter;
 			productName = app;
-			productReference = F861D805207FA4200085E80D /* korouter.framework */;
+			productReference = F861D805207FA4200085E80D /* KoRouter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -238,7 +238,7 @@
 			targets = (
 				F861D7DC207FA40F0085E80D /* KorouterApp */,
 				F861D7F0207FA4100085E80D /* KorouterAppTests */,
-				F861D804207FA4200085E80D /* korouter */,
+				F861D804207FA4200085E80D /* KoRouter */,
 			);
 		};
 /* End PBXProject section */
@@ -274,7 +274,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$SRCROOT/../gradlew\" -p \"$SRCROOT/../korouter\" copyFramework \\\n-Pconfiguration.build.dir=\"$CONFIGURATION_BUILD_DIR\"          \\\n-Pkotlin.build.type=\"$KOTLIN_BUILD_TYPE\"                      \\\n-Pkotlin.target=\"$KOTLIN_TARGET\"\n";
+			shellScript = "\"$SRCROOT/../gradlew\" -p \"$SRCROOT/../KoRouter\" copyFramework \\\n-Pconfiguration.build.dir=\"$CONFIGURATION_BUILD_DIR\"          \\\n-Pkotlin.build.type=\"$KOTLIN_BUILD_TYPE\"                      \\\n-Pkotlin.target=\"$KOTLIN_TARGET\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -310,7 +310,7 @@
 		};
 		F861D80B207FA4200085E80D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F861D804207FA4200085E80D /* korouter */;
+			target = F861D804207FA4200085E80D /* KoRouter */;
 			targetProxy = F861D80A207FA4200085E80D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -631,7 +631,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F861D80E207FA4200085E80D /* Build configuration list for PBXNativeTarget "korouter" */ = {
+		F861D80E207FA4200085E80D /* Build configuration list for PBXNativeTarget "KoRouter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F861D80F207FA4200085E80D /* Debug */,
