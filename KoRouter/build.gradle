@@ -77,11 +77,12 @@ kotlin {
 
         // The default destination directory is '<build directory>/fat-framework'.
         destinationDir = file("$buildDir/fat-framework/debug")
+        def buildType = project.findProperty('kotlin.build.type') ?: 'DEBUG'
 
         // Specify the frameworks to be merged.
         from(
-                targets.ios.binaries.getFramework("DEBUG"),
-                targets.iosX64.binaries.getFramework("DEBUG")
+                targets.ios.binaries.getFramework(buildType),
+                targets.iosX64.binaries.getFramework(buildType)
         )
     }
 
