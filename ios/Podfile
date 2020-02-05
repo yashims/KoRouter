@@ -1,0 +1,28 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+#target 'KoRouter' do
+#  # Comment the next line if you don't want to use dynamic frameworks
+#  use_frameworks!
+#
+#  # Pods for KoRouter
+#
+#  target 'KorouterAppTests' do
+#    # Pods for testing
+#  end
+#
+#end
+
+target 'KorouterApp' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for KorouterApp
+  pod 'KoRouter', :git => 'https://github.com/yashims/KoRouter.git', :branch => 'issues/4'
+
+  target 'KorouterAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
