@@ -1,16 +1,22 @@
 PODS:
-  - KoRouter (1.0)
+  - KoRouter (0.0.1)
 
 DEPENDENCIES:
-  - KoRouter (from `../KoRouter`)
+  - KoRouter (from `https://github.com/yashims/KoRouter.git`, branch `issues/4`)
 
 EXTERNAL SOURCES:
   KoRouter:
-    :path: "../KoRouter"
+    :branch: issues/4
+    :git: https://github.com/yashims/KoRouter.git
+
+CHECKOUT OPTIONS:
+  KoRouter:
+    :commit: 53d2392004415b59cc23d31e1634b0e069d5480a
+    :git: https://github.com/yashims/KoRouter.git
 
 SPEC CHECKSUMS:
-  KoRouter: b8f1eed74804851bf00515a2860de3161072ca52
+  KoRouter: 7c26c3955be74193c5a1eab0829d493aec4484cb
 
-PODFILE CHECKSUM: 85edef9f57736841ba541e3ac5a46bc6cd4e6a9c
+PODFILE CHECKSUM: e992273c3861b6ba278e3dfb6184d269c2462c27
 
 COCOAPODS: 1.8.4
