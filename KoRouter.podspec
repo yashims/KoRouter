@@ -13,9 +13,15 @@ Pod::Spec.new do |spec|
 #     spec.ios.vendored_frameworks  = "KoRouter/distribution/#{spec.name}.framework"
     spec.preserve_paths = "*.framework"
 #     spec.preserve_path = "#{spec.name}.framework"
+    spec.public_header_files  = "#{spec.name}.framework/Headers/*.h"
     spec.libraries                = "c++"
 
     spec.requires_arc = true
     spec.platform = :ios
     spec.ios.deployment_target = '10.0'
+
+#     p spec.preserve_paths()
+#     p spec.preserve_path
+    p spec.source
+
 end
