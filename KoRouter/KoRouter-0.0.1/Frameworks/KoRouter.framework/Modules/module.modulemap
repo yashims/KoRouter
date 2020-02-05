@@ -1,6 +1,0 @@
-framework module KoRouter {
-    umbrella header "KoRouter.h"
-
-    export *
-    module * { export * }
-}
