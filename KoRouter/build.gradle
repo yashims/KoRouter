@@ -5,12 +5,11 @@ plugins {
 }
 
 group = "dev.yashims"
-version = "0.0.1"
+version = "0.0.2"
 archivesBaseName = 'korouter'
 
 
 ext {
-    library_build = 1
     library_name = group + ".korouter"
 }
 
@@ -32,7 +31,6 @@ android {
 }
 
 dependencies {
-//    implementation project(':util')
     // Specify Kotlin/JVM stdlib dependency.
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7'
 
@@ -141,7 +139,7 @@ configurations {
 // make sure all Gradle infrastructure exists (gradle.wrapper, gradlew).
 task copyFramework {
     def buildType = project.findProperty('kotlin.build.type') ?: 'DEBUG'
-    def target = project.findProperty('kotlin.target') ?: 'ios'
+    def target = project.findProperty('kotlin.target') ?: 'iosArm64'
     dependsOn debugFatFramework
 
     doLast {

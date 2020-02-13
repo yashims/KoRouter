@@ -18,7 +18,7 @@ target 'KorouterApp' do
   use_frameworks!
 
   # Pods for KorouterApp
-  pod 'KoRouter', :git => 'https://github.com/yashims/KoRouter.git', :tag => 'v0.0.1-1.3.70-eap'
+  pod 'KoRouter', :git => 'https://github.com/yashims/KoRouter.git', :branch => 'v0.0.2'
 
   target 'KorouterAppTests' do
     inherit! :search_paths
