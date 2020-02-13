@@ -15,30 +15,28 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic ignored "-Wunknown-warning-option"
 #pragma clang diagnostic ignored "-Wnullability"
 
-@interface KotlinBase : NSObject
+__attribute__((swift_name("KotlinBase")))
+@interface KoRouterBase : NSObject
 - (instancetype)init __attribute__((unavailable));
 + (instancetype)new __attribute__((unavailable));
 + (void)initialize __attribute__((objc_requires_super));
 @end;
 
-@interface KotlinBase (KotlinBaseCopying) <NSCopying>
+@interface KoRouterBase (KoRouterBaseCopying) <NSCopying>
 @end;
 
-__attribute__((objc_runtime_name("KotlinMutableSet")))
 __attribute__((swift_name("KotlinMutableSet")))
 @interface KoRouterMutableSet<ObjectType> : NSMutableSet<ObjectType>
 @end;
 
-__attribute__((objc_runtime_name("KotlinMutableDictionary")))
 __attribute__((swift_name("KotlinMutableDictionary")))
 @interface KoRouterMutableDictionary<KeyType, ObjectType> : NSMutableDictionary<KeyType, ObjectType>
 @end;
 
-@interface NSError (NSErrorKotlinException)
+@interface NSError (NSErrorKoRouterKotlinException)
 @property (readonly) id _Nullable kotlinException;
 @end;
 
-__attribute__((objc_runtime_name("KotlinNumber")))
 __attribute__((swift_name("KotlinNumber")))
 @interface KoRouterNumber : NSNumber
 - (instancetype)initWithChar:(char)value __attribute__((unavailable));
@@ -73,77 +71,66 @@ __attribute__((swift_name("KotlinNumber")))
 + (instancetype)numberWithUnsignedInteger:(NSUInteger)value __attribute__((unavailable));
 @end;
 
-__attribute__((objc_runtime_name("KotlinByte")))
 __attribute__((swift_name("KotlinByte")))
 @interface KoRouterByte : KoRouterNumber
 - (instancetype)initWithChar:(char)value;
 + (instancetype)numberWithChar:(char)value;
 @end;
 
-__attribute__((objc_runtime_name("KotlinUByte")))
 __attribute__((swift_name("KotlinUByte")))
 @interface KoRouterUByte : KoRouterNumber
 - (instancetype)initWithUnsignedChar:(unsigned char)value;
 + (instancetype)numberWithUnsignedChar:(unsigned char)value;
 @end;
 
-__attribute__((objc_runtime_name("KotlinShort")))
 __attribute__((swift_name("KotlinShort")))
 @interface KoRouterShort : KoRouterNumber
 - (instancetype)initWithShort:(short)value;
 + (instancetype)numberWithShort:(short)value;
 @end;
 
-__attribute__((objc_runtime_name("KotlinUShort")))
 __attribute__((swift_name("KotlinUShort")))
 @interface KoRouterUShort : KoRouterNumber
 - (instancetype)initWithUnsignedShort:(unsigned short)value;
 + (instancetype)numberWithUnsignedShort:(unsigned short)value;
 @end;
 
-__attribute__((objc_runtime_name("KotlinInt")))
 __attribute__((swift_name("KotlinInt")))
 @interface KoRouterInt : KoRouterNumber
 - (instancetype)initWithInt:(int)value;
 + (instancetype)numberWithInt:(int)value;
 @end;
 
-__attribute__((objc_runtime_name("KotlinUInt")))
 __attribute__((swift_name("KotlinUInt")))
 @interface KoRouterUInt : KoRouterNumber
 - (instancetype)initWithUnsignedInt:(unsigned int)value;
 + (instancetype)numberWithUnsignedInt:(unsigned int)value;
 @end;
 
-__attribute__((objc_runtime_name("KotlinLong")))
 __attribute__((swift_name("KotlinLong")))
 @interface KoRouterLong : KoRouterNumber
 - (instancetype)initWithLongLong:(long long)value;
 + (instancetype)numberWithLongLong:(long long)value;
 @end;
 
-__attribute__((objc_runtime_name("KotlinULong")))
 __attribute__((swift_name("KotlinULong")))
 @interface KoRouterULong : KoRouterNumber
 - (instancetype)initWithUnsignedLongLong:(unsigned long long)value;
 + (instancetype)numberWithUnsignedLongLong:(unsigned long long)value;
 @end;
 
-__attribute__((objc_runtime_name("KotlinFloat")))
 __attribute__((swift_name("KotlinFloat")))
 @interface KoRouterFloat : KoRouterNumber
 - (instancetype)initWithFloat:(float)value;
 + (instancetype)numberWithFloat:(float)value;
 @end;
 
-__attribute__((objc_runtime_name("KotlinDouble")))
 __attribute__((swift_name("KotlinDouble")))
 @interface KoRouterDouble : KoRouterNumber
 - (instancetype)initWithDouble:(double)value;
 + (instancetype)numberWithDouble:(double)value;
 @end;
 
-__attribute__((objc_runtime_name("KotlinBoolean")))
 __attribute__((swift_name("KotlinBoolean")))
 @interface KoRouterBoolean : KoRouterNumber
 - (instancetype)initWithBool:(BOOL)value;
@@ -152,7 +139,7 @@ __attribute__((swift_name("KotlinBoolean")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("History")))
-@interface KoRouterHistory : KotlinBase
+@interface KoRouterHistory : KoRouterBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (NSString *)backNumber:(int32_t)number __attribute__((swift_name("back(number:)")));
@@ -166,7 +153,7 @@ __attribute__((swift_name("History")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KoRouter")))
-@interface KoRouterKoRouter : KotlinBase
+@interface KoRouterKoRouter : KoRouterBase
 - (instancetype)initWithBlock:(void (^)(KoRouterKoRouterChildrenBuilder *))block __attribute__((swift_name("init(block:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithRoutes:(NSArray<KoRouterRoute *> *)routes __attribute__((swift_name("init(routes:)"))) __attribute__((objc_designated_initializer));
 - (void)addChildrenParentLocation:(NSString *)parentLocation children:(NSArray<KoRouterRoute *> *)children __attribute__((swift_name("addChildren(parentLocation:children:)")));
@@ -179,7 +166,7 @@ __attribute__((swift_name("KoRouter")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KoRouter.ChildrenBuilder")))
-@interface KoRouterKoRouterChildrenBuilder : KotlinBase
+@interface KoRouterKoRouterChildrenBuilder : KoRouterBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (NSMutableArray<KoRouterRoute *> *)build __attribute__((swift_name("build()")));
@@ -188,7 +175,7 @@ __attribute__((swift_name("KoRouter.ChildrenBuilder")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KoRouter.ChildrenBuilderCompanion")))
-@interface KoRouterKoRouterChildrenBuilderCompanion : KotlinBase
+@interface KoRouterKoRouterChildrenBuilderCompanion : KoRouterBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
@@ -197,7 +184,7 @@ __attribute__((swift_name("KoRouter.ChildrenBuilderCompanion")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KoRouter.Companion")))
-@interface KoRouterKoRouterCompanion : KotlinBase
+@interface KoRouterKoRouterCompanion : KoRouterBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
@@ -206,7 +193,7 @@ __attribute__((swift_name("KoRouter.Companion")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KoRouter.RouteBuilder")))
-@interface KoRouterKoRouterRouteBuilder : KotlinBase
+@interface KoRouterKoRouterRouteBuilder : KoRouterBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (KoRouterRoute *)build __attribute__((swift_name("build()")));
@@ -218,7 +205,7 @@ __attribute__((swift_name("KoRouter.RouteBuilder")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KoRouter.RouteBuilderCompanion")))
-@interface KoRouterKoRouterRouteBuilderCompanion : KotlinBase
+@interface KoRouterKoRouterRouteBuilderCompanion : KoRouterBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
@@ -227,7 +214,7 @@ __attribute__((swift_name("KoRouter.RouteBuilderCompanion")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Matcher")))
-@interface KoRouterMatcher : KotlinBase
+@interface KoRouterMatcher : KoRouterBase
 - (instancetype)initWithRoutes:(NSArray<KoRouterRoute *> *)routes __attribute__((swift_name("init(routes:)"))) __attribute__((objc_designated_initializer));
 - (void)addChildrenParent:(KoRouterRoute *)parent children:(NSArray<KoRouterRoute *> *)children replace:(BOOL)replace __attribute__((swift_name("addChildren(parent:children:replace:)")));
 - (void)addChildrenParentLocation:(NSString *)parentLocation children:(NSArray<KoRouterRoute *> *)children __attribute__((swift_name("addChildren(parentLocation:children:)")));
@@ -236,7 +223,7 @@ __attribute__((swift_name("Matcher")))
 @end;
 
 __attribute__((swift_name("KotlinThrowable")))
-@interface KoRouterKotlinThrowable : KotlinBase
+@interface KoRouterKotlinThrowable : KoRouterBase
 - (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithCause:(KoRouterKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
@@ -277,7 +264,7 @@ __attribute__((swift_name("Presenter")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Route")))
-@interface KoRouterRoute : KotlinBase
+@interface KoRouterRoute : KoRouterBase
 - (instancetype)initWithPath:(NSString *)path name:(NSString *)name component:(id<KoRouterPresenter>)component children:(NSMutableArray<KoRouterRoute *> * _Nullable)children parent:(KoRouterRoute * _Nullable)parent __attribute__((swift_name("init(path:name:component:children:parent:)"))) __attribute__((objc_designated_initializer));
 - (NSString *)component1 __attribute__((swift_name("component1()")));
 - (NSString *)component2 __attribute__((swift_name("component2()")));
@@ -310,7 +297,7 @@ __attribute__((swift_name("RouteNotMatchException")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("RouterMatchResult")))
-@interface KoRouterRouterMatchResult : KotlinBase
+@interface KoRouterRouterMatchResult : KoRouterBase
 - (instancetype)initWithRoute:(KoRouterRoute *)route param:(NSDictionary<NSString *, NSString *> * _Nullable)param __attribute__((swift_name("init(route:param:)"))) __attribute__((objc_designated_initializer));
 - (KoRouterRoute *)component1 __attribute__((swift_name("component1()")));
 - (NSDictionary<NSString *, NSString *> * _Nullable)component2 __attribute__((swift_name("component2()")));
@@ -325,13 +312,13 @@ __attribute__((swift_name("RouterMatchResult")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("ConcurrencyKt")))
-@interface KoRouterConcurrencyKt : KotlinBase
+@interface KoRouterConcurrencyKt : KoRouterBase
 + (id _Nullable)korouterRunBlockingContext:(id<KoRouterKotlinCoroutineContext>)context block:(id<KoRouterKotlinSuspendFunction1>)block __attribute__((swift_name("korouterRunBlocking(context:block:)")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KotlinArray")))
-@interface KoRouterKotlinArray : KotlinBase
+@interface KoRouterKotlinArray : KoRouterBase
 + (instancetype)arrayWithSize:(int32_t)size init:(id _Nullable (^)(KoRouterInt *))init __attribute__((swift_name("init(size:init:)")));
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));

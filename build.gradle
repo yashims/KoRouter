@@ -4,6 +4,7 @@ buildscript {
     repositories {
         maven { url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies" }
         maven { url "https://kotlin.bintray.com/kotlinx" }
+        maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
         mavenCentral()
         jcenter()
         google()
@@ -22,6 +23,7 @@ buildscript {
 allprojects {
     repositories {
         maven { url "https://dl.bintray.com/yashims/maven" }
+        maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
         mavenCentral()
         jcenter()
         google()
