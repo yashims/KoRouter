@@ -1,7 +1,6 @@
 package dev.yashims.korouter
 
 import dev.yashims.korouter.matcher.RouterMatchResult
-import me.yashims.util.Log
 import kotlin.math.min
 
 class KoRouter(routes: List<Route>) {
@@ -12,7 +11,6 @@ class KoRouter(routes: List<Route>) {
         private set
 
     fun push(location: String) {
-        Log.d("push")
         history.push(location)
         val prevRoute = currentRoute
         val matches: RouterMatchResult = matcher.match(location)

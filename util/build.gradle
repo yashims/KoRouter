@@ -47,7 +47,13 @@ dependencies {
 kotlin {
     android()
 
-    iosArm64('ios') {
+    iosArm64() {
+        binaries {
+            framework()
+        }
+    }
+
+    iosArm32() {
         binaries {
             framework()
         }
@@ -84,7 +90,10 @@ kotlin {
                 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines_version"
             }
         }
+        iosMain.dependsOn(commonMain)
 
+        iosArm64Main.dependsOn(iosMain)
+        iosArm32Main.dependsOn(iosMain)
         iosX64Main.dependsOn(iosMain)
 
         commonTest {
@@ -104,7 +113,7 @@ configurations {
 
 task copyFramework {
     def buildType = project.findProperty('kotlin.build.type') ?: 'DEBUG'
-    def target = project.findProperty('kotlin.target') ?: 'ios'
+    def target = project.findProperty('kotlin.target') ?: 'iosArm64'
     dependsOn kotlin.targets."$target".binaries.getFramework(buildType).linkTask
 
     doLast {
